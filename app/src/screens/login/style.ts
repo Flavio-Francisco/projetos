@@ -9,6 +9,7 @@ export const  ConteinerLogin =  styled.View`
   background-color:#000;
  
 `;
+
 export const  Label = styled.TextInput`
 
   width:90%;

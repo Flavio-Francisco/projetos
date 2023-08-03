@@ -1,5 +1,5 @@
 import { ButtomLogin, ConteinerLogin, Label,TextButton,TextLogin,TextLabel,ButtomIcons } from "./style";
-import { AntDesign,Foundation } from '@expo/vector-icons'; 
+import { AntDesign,Foundation,Fontisto  } from '@expo/vector-icons'; 
 
 
 
@@ -21,7 +21,7 @@ export default function Login(){
              placeholderTextColor='#8687E7'
             />
             <ButtomLogin><TextButton>Login</TextButton></ButtomLogin>
-            <ButtomIcons><AntDesign name="google"size={22}color={'#34A853'}/></ButtomIcons>
+            <ButtomIcons><Fontisto name="google"size={22} color={'col'}/></ButtomIcons>
             <ButtomIcons><Foundation name="social-apple"  size={22} color={'#FFFFFF'}/></ButtomIcons>
         </ConteinerLogin>
     )
