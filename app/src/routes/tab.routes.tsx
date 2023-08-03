@@ -1,4 +1,5 @@
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs'
+
 import { FontAwesome5,Entypo } from '@expo/vector-icons'; 
 
 import Register from '../screens/register';
