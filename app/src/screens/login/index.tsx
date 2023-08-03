@@ -21,8 +21,10 @@ export default function Login(){
              placeholderTextColor='#8687E7'
             />
             <ButtomLogin><TextButton>Login</TextButton></ButtomLogin>
-            <ButtomIcons><Fontisto name="google"size={22} color={'col'}/></ButtomIcons>
-            <ButtomIcons><Foundation name="social-apple"  size={22} color={'#FFFFFF'}/></ButtomIcons>
+
+            <ButtomIcons><Fontisto name="google"size={22} color={'#8687E7'}/></ButtomIcons>
+
+            <ButtomIcons><Foundation name="social-apple"  size={30} color={'#8687E7'}/></ButtomIcons>
         </ConteinerLogin>
     )
 }

@@ -1,7 +1,8 @@
-import Icon from 'react-native-vector-icons/FontAwesome'; // Importe o ícone que deseja usar
-import Ionicons from '@expo/vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/FontAwesome'; 
+import { MaterialCommunityIcons,Fontisto,Feather,Ionicons } from '@expo/vector-icons';
 import { ButtomIcon, Container, Title,ContainerTitle, ContainerFull, Header,AvatarUser, ButtomAdd, TextButton } from "./style";
-import { TouchableOpacity} from 'react-native';
+import { TouchableOpacity,Text} from 'react-native';
+
 
 
 
@@ -20,12 +21,14 @@ export default function HomeMemu(){
         </Header>
         <ContainerTitle>
         <Title>Choose Category</Title>
+   
         </ContainerTitle>
          
         <Container>
             
             <ButtomIcon
             style={{backgroundColor:'#CCFF80',}}
+            
             >
             <Ionicons name='browsers' size={22} color={'#21A300'} />
             </ButtomIcon>
@@ -35,32 +38,32 @@ export default function HomeMemu(){
             ><Icon name='suitcase' size={22} color={'#21A300'} /></ButtomIcon>
             <ButtomIcon
              style={{backgroundColor:'#80FFFF',}}
-            ><Icon name={'bar-bell'} size={22} color={'#00A32F'} /></ButtomIcon>
+            ><MaterialCommunityIcons name={'dumbbell'} size={30} color={'#00A32F'} /></ButtomIcon>
             <ButtomIcon
              style={{backgroundColor:'#80FFD9',}}
-            ><Icon name={'google'} size={22} color={'#00A32F'} /></ButtomIcon>
+            ><MaterialCommunityIcons name={'gamepad-up'} size={35} color={'#00A32F'} /></ButtomIcon>
             <ButtomIcon
-             style={{backgroundColor:'#0055A3',}}
-            ><Icon name={'google'} size={22} color={'#00A32F'} /></ButtomIcon>
+             style={{backgroundColor:'#80FFFF'}}
+            ><Icon name={'graduation-cap'} size={30} color={'#0055A3'} /></ButtomIcon>
             <ButtomIcon
              style={{backgroundColor:'#FF80EB',}}
-            ><Icon name={'google'} size={22} color={'#A30089'} /></ButtomIcon>
+            ><Fontisto name={'headphone'} size={30} color={'#A30089'} /></ButtomIcon>
             <ButtomIcon
              style={{backgroundColor:'#FC80FF',}}
         
-            ><Icon name={'google'} size={22} color={'#A30089'} /></ButtomIcon>
+            ><Feather name={'heart'} size={30} color={'#A30089'} /></ButtomIcon>
               <ButtomIcon
              style={{backgroundColor:'#80FFA3',}}
-            ><Icon name={'google'} size={22} color={'#00A3A3'} /></ButtomIcon>
+            ><MaterialCommunityIcons name={'movie-open'} size={22} color={'#00A3A3'} /></ButtomIcon>
               <ButtomIcon
              style={{backgroundColor:'#80D1FF',}}
-            ><Icon name={'google'} size={22} color={'#0069A3'} /></ButtomIcon>
+            ><Ionicons name={'md-home-outline'} size={30} color={'#0069A3'} /></ButtomIcon>
               <ButtomIcon
              style={{backgroundColor:'#FFCC80',}}
-            ><Icon name={'google'} size={22} color={'#A36200'} /></ButtomIcon>
+            ><Icon name={'google'} size={30} color={'#A36200'} /></ButtomIcon>
               <ButtomIcon
              style={{backgroundColor:'#80FFD1',}}
-            ><Icon name={'google'} size={22} color={'#00A369'} /></ButtomIcon>
+            ><Ionicons name={'md-add'} size={45} color={'#00A369'} /></ButtomIcon>
         </Container>
         <ButtomAdd><TextButton>AddCategory</TextButton></ButtomAdd>
     </ContainerFull>

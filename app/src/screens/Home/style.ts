@@ -32,7 +32,7 @@ export const Container = styled.View`
   margin-top:0px;
   background-color:#000;
   
-  border-top: 3px solid '#979797';
+  
   
 
 `;
@@ -66,7 +66,7 @@ export const Title = styled.Text`
  text-align:center;
  color: #979797;
  padding:10px;
- 
+ border-bottom: 3px;
 
 `;
 export const TextButton = styled.Text`
