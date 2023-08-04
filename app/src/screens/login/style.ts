@@ -60,11 +60,20 @@ export const  ButtomIcons = styled.TouchableOpacity`
  width:90%;
  padding:15px;
  margin-left:10px; 
+ flex-direction:row;
  justify-content:center;
  align-items:center;
+ gap:15px;
  margin-top:45px;
  border-radius:10px;
  background-color:#000;
  border:1px solid  #8875FF;
  
  `;
+ export const TextSocial = styled.Text`
+  font-size: 16px;
+  color: #8875FF;
+  font-weight: bold;
+  text-align: center;
+  justify-content:center;
+  `;

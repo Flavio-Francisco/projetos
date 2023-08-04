@@ -6,6 +6,7 @@ export const ContainerFull = styled.View`
   flex:1;
   justify-content: center;
   align-items:center;
+  height:100%;
   background-color:#000;
 
 
@@ -13,7 +14,7 @@ export const ContainerFull = styled.View`
 export const  Header =  styled.View`
   width:90%;
   height: 74px; 
-  margin-top:-10px;
+  margin-left:30px;
   flex-direction: row;
   align-items:center;
   justify-content: space-between;
@@ -21,15 +22,20 @@ export const  Header =  styled.View`
  
  
 `;
+export const HorizontalLine = styled.View`
+  width: 90%;
+  height: 1px;
+  background-color: #979797;
+`;
 
 export const Container = styled.View`
+
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space;
   padding-inline: 20px;
-  margin: 30px;
-  margin-bottom:0px;
-  margin-top:0px;
+  margin-top:3px;
+  margin-left:30px;
   background-color:#000;
   
   
@@ -53,9 +59,8 @@ export const ContainerTitle = styled.View`
 
  justify-content:center;
  align-items:center;
- height:45px;
+ height:50px;
  width:90%;
- border-bottom:3px solid '#979797';
  background-color:#000;
 
 `;
@@ -66,7 +71,7 @@ export const Title = styled.Text`
  text-align:center;
  color: #979797;
  padding:10px;
- border-bottom: 3px;
+ 
 
 `;
 export const TextButton = styled.Text`
@@ -77,6 +82,15 @@ export const TextButton = styled.Text`
 
 
 `;
+export const TextIcon = styled.Text`
+ 
+ font-size:12px;
+ text-align:center;
+ color: #979797;
+
+
+`;
+
 export const AvatarUser = styled.Image`
  height:60px;
  width:60px;
@@ -91,7 +105,7 @@ export const ButtomAdd = styled.TouchableOpacity`
   background-color: #8687E7;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
   border-radius: 5px;
 
 `;
