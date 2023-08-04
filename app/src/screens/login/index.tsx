@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 
 
 
+
 export default function Login(){
     const navigation = useNavigation();
     function handleSubmit() {
@@ -23,6 +24,7 @@ export default function Login(){
             <Label
              placeholder="Digite sua senha"
              placeholderTextColor='#8687E7'
+             secureTextEntry={true}
             />
             <ButtomLogin
             onPress={handleSubmit}
