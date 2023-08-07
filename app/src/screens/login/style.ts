@@ -15,7 +15,7 @@ export const  Label = styled.TextInput`
   width:90%;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #8687E7;
+  border: 1px solid #fff;
   border-radius: 5px;
   margin:10px
   
@@ -45,7 +45,7 @@ export const  ButtomLogin = styled.TouchableOpacity`
  align-items:center;
  margin-top:45px;
  border-radius:10px;
- background-color:#8687E7;
+ background-color:#8875FF;
 
 `;
 export const TextButton = styled.Text`
@@ -67,12 +67,12 @@ export const  ButtomIcons = styled.TouchableOpacity`
  margin-top:45px;
  border-radius:10px;
  background-color:#000;
- border:1px solid  #8875FF;
+ border:1px solid  #fff;
  
  `;
  export const TextSocial = styled.Text`
   font-size: 16px;
-  color: #8875FF;
+  color: #fFF;
   font-weight: bold;
   text-align: center;
   justify-content:center;

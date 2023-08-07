@@ -15,6 +15,7 @@ export const  Header =  styled.View`
   width:90%;
   height: 74px; 
   margin-left:30px;
+  margin-top:30px;
   flex-direction: row;
   align-items:center;
   justify-content: space-between;
@@ -92,6 +93,7 @@ export const TextIcon = styled.Text`
 `;
 
 export const AvatarUser = styled.Image`
+
  height:60px;
  width:60px;
  border-radius:50px;

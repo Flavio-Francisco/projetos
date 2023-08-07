@@ -18,12 +18,12 @@ export default function Login(){
             <TextLabel>Usename</TextLabel>
             <Label
             placeholder="Digite seu usário"
-            placeholderTextColor='#8687E7'
+            placeholderTextColor='#fff'
             />
              <TextLabel>Password</TextLabel>
             <Label
              placeholder="Digite sua senha"
-             placeholderTextColor='#8687E7'
+             placeholderTextColor='#fff'
              secureTextEntry={true}
             />
             <ButtomLogin
@@ -33,12 +33,12 @@ export default function Login(){
             </ButtomLogin>
 
             <ButtomIcons>
-                <Fontisto name="google"size={22} color={'#8687E7'}/>
+                <Fontisto name="google"size={22} color={'#fff'}/>
                 <TextSocial>Login with Google</TextSocial> 
             </ButtomIcons>
 
             <ButtomIcons>
-                <Foundation name="social-apple"  size={30} color={'#8687E7'}/>
+                <Foundation name="social-apple"  size={22} color={'#fff'}/>
                 <TextSocial>Login with Appe</TextSocial> 
             </ButtomIcons>
         </ConteinerLogin>

@@ -22,7 +22,7 @@ export default function Stack() {
         
           />
           <Screen
-          name='HomeMenu'
+          name='Home'
           component={HomeMemu}
             options={{
                
@@ -31,8 +31,6 @@ export default function Stack() {
         
           /> 
          
-      
-             
         </Navigator>
     )
 }
