@@ -7,7 +7,7 @@ export const  Conteiner =  styled.View`
   flex:1;
   justify-content:center;
   text-align: center;
-  background-color:#000;
+  background-color:#fff;
  
 `;
 
@@ -24,7 +24,7 @@ export const TasksDate = styled.Text`
  font-size:12px;
 `; 
 
-export const Buttom= styled.TouchableOpacity`
+export const ButtomRoute = styled.TouchableOpacity`
 height:10px;
 width:10%;
 `;

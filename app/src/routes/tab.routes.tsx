@@ -30,11 +30,7 @@ export default function Tab() {
           component={Register}
         
           />
-            <Screen
-          name='  Home'
-          component={Home}
         
-          />
              
         </Navigator>
     )
