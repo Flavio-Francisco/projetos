@@ -4,8 +4,9 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 
 
 import Login from '../screens/login';
-import HomeMemu from '../screens/Home';
+import HomeMemu from '../screens/HomeMeu';
 import Register from '../screens/register';
+import Home from '../screens/Home';
 
 
 const{Navigator,Screen} = createMaterialBottomTabNavigator();
@@ -19,14 +20,19 @@ export default function Tab() {
           component={Login}
         
           />
-                <Screen
+              <Screen
           name='HomeMenu'
           component={HomeMemu}
         
           /> 
-                  <Screen
+             <Screen
           name='Regster'
           component={Register}
+        
+          />
+            <Screen
+          name='  Home'
+          component={Home}
         
           />
              

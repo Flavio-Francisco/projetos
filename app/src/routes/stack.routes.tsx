@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 import Login from '../screens/login';
-import HomeMemu from '../screens/Home';
+import HomeMemu from '../screens/HomeMeu';
 
 
 const{Navigator,Screen} =  createStackNavigator();
