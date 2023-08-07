@@ -3,7 +3,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 import Login from '../screens/login';
-import HomeMemu from '../screens/HomeMeu';
+import Options from '../screens/Options';
+
+
 
 
 const{Navigator,Screen} =  createStackNavigator();
@@ -21,16 +23,14 @@ export default function Stack() {
           }}
         
           />
-          <Screen
-          name='Home'
-          component={HomeMemu}
-            options={{
+         <Screen
+          name='Options'
+          component={Options}
+          options={{
                
-                headerShown:false
-            }}
-        
-          /> 
-         
+            headerShown:false
+          }}
+         />
         </Navigator>
     )
 }

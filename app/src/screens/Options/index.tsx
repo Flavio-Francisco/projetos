@@ -6,7 +6,8 @@ import { TouchableOpacity, View} from 'react-native';
 
 
 
-export default function HomeMemu(){
+
+export default function Options(){
     return(
     <ContainerFull >
 

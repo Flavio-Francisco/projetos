@@ -1,25 +1,21 @@
-import { FlatList } from "react-native-gesture-handler";
-import Card, { PropsList } from "../../components/Card";
-import { Conteiner } from "./style";
+
+import Card from "../../Card.tsx/Card";
+import { Conteiner, List } from "./style";
 
 
 
 
 
 
-export default function Home(props:PropsList){
-const Test = [ 
-    props.id = 1,
-    props.tasks = 'gagvaga',
-    props.date = '12/0/1983',
-    props.buttom = true,
-
-
-]
+export default function Home(){
 
     return(
     <Conteiner>
-    
+    <List
+    data={['1','2','3']}
+    keyExtractor={item=>item}
+    renderItem={()=><Card task={"Do Math HomeWork"} data={"07/08/2023"} numbericom={1}/>}
+    />
     </Conteiner>
     )
 }
