@@ -27,7 +27,7 @@ export default function Card(props:PropsList){
           < Checkbox
           value={isChecked}
           onValueChange={setChecked}
-          color={isChecked ? '#000' : undefined}
+          color={isChecked ? '#fff' : undefined}
           />
           
             < ConteinerView>
@@ -38,11 +38,11 @@ export default function Card(props:PropsList){
                   <TextIcon>{props.data}</TextIcon>
                  <ViewButtomIcon>
                   <TasksButtom >
-                    <Feather name="home" size={18} color="#fff" />
+                    <Feather name="home" size={18} color="#A30000" />
                     <TextIcon>Home</TextIcon>
                   </TasksButtom>
                     < TasksTextP>
-                        <Feather name="flag" size={18} color="black" />{props.numbericom}
+                        <Feather name="flag" size={18} color="#ffffff" />{props.numbericom}
                     </TasksTextP>
                  </ViewButtomIcon>
                  

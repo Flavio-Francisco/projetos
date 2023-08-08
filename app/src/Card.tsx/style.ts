@@ -9,29 +9,29 @@ export const  Conteiner =  styled.View`
   flex-direction:row;
   justify-content:center;
   align-items:center;
-  height:80px;
-  width:100%;
-  margin:30px;
+  height:72px;
+  width:90%;
+  margin-top:10px;
+  margin-left:10px;
   text-align: center;
-  background-color:#999;
-  border-radius:7px;
+  background-color:#979797;
+  border-radius:5px;
 `;
 
 export const  ConteinerView =  styled.View`
   
   flex-direction:column;
   justify-content:space-around;
-  height:100%;
-  width:90%;
+  height:90%;
+  width:80%;
   margin:10px;
   text-align: center;
-  background-color:#fff;
   border-radius:7px;
 `;
 export const  ConteinerTask =  styled.View`
   height:25px;
   width:80%;
-  background-color:yellowr;
+
  
 `;
 export const  ConteinerData =  styled.View`
@@ -40,7 +40,6 @@ export const  ConteinerData =  styled.View`
   justify-content:space-between;
   align-items:center;
   border-radius:7px;
-  background-color:#999;
   gap:3px;
  
 `;
@@ -51,7 +50,6 @@ export const  ViewButtomIcon=  styled.View`
   align-items:center;
   flex-direction:row;
   justify-content:space-around;
-  background-color:#fff;
   gap:2px;
  
 `;
@@ -60,29 +58,27 @@ export const  ViewButtomIcon=  styled.View`
  
 export const  TasksTextG =  styled.Text` 
   font-size:16px;
-  
-  background-color:#fff;
+  color:#ffffff;
  
 `;
 export const  TasksTextP =  styled.Text`
   font-size:12px;
   text-align: center;
-  background-color:#fff;
-  border: 1px solid #8687E7;
+  border: 2px solid #8687E7;
   border-radius:5px;
   padding:5px;
+  color:#ffffff;
 `;
 export const  TasksDate =  styled.Text`
   font-size:12px;
   width:25px;
   text-align: center;
-  background-color:#000;
- 
+  color:#ffffff;
 `;
 export const  TextIcon =  styled.Text`
   font-size:12px;
   text-align: center;
-  background-color:#fff;
+  color:#ffffff;
  
 `;
 export const  TasksButtom =  styled.TouchableOpacity`
@@ -92,9 +88,9 @@ export const  TasksButtom =  styled.TouchableOpacity`
   justify-content:center;
   flex-direction:row;
   border-radius:5px;
+  background-color:#FF8080;
   gap:3px;
-  background-color:blue;
- 
+
 `;
 
  
