@@ -9,12 +9,11 @@ export const  Conteiner =  styled.View`
   flex-direction:row;
   justify-content:center;
   align-items:center;
-  height:72px;
   width:90%;
   margin-top:10px;
   margin-left:10px;
   text-align: center;
-  background-color:#979797;
+  background-color:#363636;
   border-radius:5px;
 `;
 
