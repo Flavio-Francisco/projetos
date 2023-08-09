@@ -29,7 +29,7 @@ export default function Home(){
           <Search/>
         </ConteinerSearch>
         <SearchButtomList>
-            <TextSearch>Today</TextSearch>
+            <TextSearch>Today </TextSearch>
             <AntDesign name="down" size={12} color="#979797" />
         </SearchButtomList>
        <ConteinerList>
