@@ -81,9 +81,10 @@ export const ViewHorizontal =styled.View`
 flex-direction:row;
 align-items:center;
 width: 90%;
-background-color:#000;
 gap:3px;
+background-color:#000;
 margin-top:15px;
+margin-left:10px;
 `;
 export const TextLink= styled.Text`
   font-size: 12px;

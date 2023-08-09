@@ -1,24 +1,24 @@
 import styled from 'styled-components/native';
 
-
-
 export const ContainerFull = styled.View`
   flex:1;
   justify-content: center;
   align-items:center;
-  height:100%;
   background-color:#000;
-
+  margin-top:-20%;
 
 `;
 export const  Header =  styled.View`
   width:90%;
   height: 74px; 
   margin-left:30px;
-  margin-top:30px;
   flex-direction: row;
   align-items:center;
   justify-content: space-between;
+  background-color:#000;
+`;
+export const ViewModal = styled.View`
+  height:100%;
   background-color:#000;
  
  
@@ -30,23 +30,17 @@ export const HorizontalLine = styled.View`
 `;
 
 export const Container = styled.View`
-
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space;
-  padding-inline: 20px;
-  margin-top:3px;
   margin-left:30px;
   background-color:#000;
   
-  
-  
-
 `;
 
 export const ButtomIcon = styled.TouchableOpacity`
-  width: 80px;
-  height: 74px;
+  width: 64px;
+  height: 64px;
   justify-content: center;
   align-items: center;
   margin-block: 15px;
@@ -107,7 +101,7 @@ export const ButtomAdd = styled.TouchableOpacity`
   background-color: #8687E7;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 50px;
   border-radius: 5px;
 
 `;

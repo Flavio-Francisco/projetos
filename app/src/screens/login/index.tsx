@@ -1,6 +1,8 @@
+import { StatusBar } from "expo-status-bar";
 import { ButtomLogin, ConteinerLogin, Label,TextButton,TextLogin,TextLabel,ButtomIcons, TextSocial } from "./style";
 import { Foundation,Fontisto  } from '@expo/vector-icons'; 
 import { useNavigation } from "@react-navigation/native";
+
 
 
 
@@ -13,6 +15,7 @@ export default function Login(){
 
     return(
         <ConteinerLogin>
+           <StatusBar/>
             <TextLogin>Login</TextLogin>
             
             <TextLabel>Usename</TextLabel>

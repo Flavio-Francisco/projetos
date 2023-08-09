@@ -11,7 +11,7 @@ export const  Conteiner =  styled.View`
   align-items:center;
   width:90%;
   margin-top:10px;
-  margin-left:10px;
+  margin-left:15px;
   text-align: center;
   background-color:#363636;
   border-radius:5px;
@@ -24,6 +24,7 @@ export const  ConteinerView =  styled.View`
   height:90%;
   width:80%;
   margin:10px;
+  margin-left:15px;
   text-align: center;
   border-radius:7px;
 `;
@@ -31,7 +32,6 @@ export const  ConteinerTask =  styled.View`
   height:25px;
   width:80%;
 
- 
 `;
 export const  ConteinerData =  styled.View`
   display: flex;
@@ -50,6 +50,8 @@ export const  ViewButtomIcon=  styled.View`
   flex-direction:row;
   justify-content:space-around;
   gap:2px;
+ 
+ 
  
 `;
 

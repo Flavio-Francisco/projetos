@@ -1,17 +1,18 @@
 
-import { TouchableOpacity } from "react-native";
-import Card from "../../Card.tsx/Card";
+import { TouchableOpacity, Modal, Alert} from "react-native";
 import { AvatarUserHome, Conteiner, ConteinerList, ConteinerList2, ConteinerSearch, HeaderHome, List, Search, SearchButtom,SearchButtomList,SearchButtomList2,TextSearch,TitleHome } from "./style";
 import { Feather,Ionicons ,AntDesign} from '@expo/vector-icons';
+import { useState } from "react";
 
-
-
+import Card from "../../Card/Card";
+import Card2 from "../../Card2/Card2";
 
 
 export default function Home(){
-
+    const [modalVisible, setModalVisible] = useState(false);
     return(
     <Conteiner>
+   
        <HeaderHome>
        <TouchableOpacity>
             <Ionicons name='md-menu-outline' size={22} color={'#979797'} />
@@ -30,7 +31,7 @@ export default function Home(){
         </ConteinerSearch>
         <SearchButtomList>
             <TextSearch>Today </TextSearch>
-            <AntDesign name="down" size={12} color="#979797" />
+            <AntDesign name="down" size={12} color="#ffffff" />
         </SearchButtomList>
        <ConteinerList>
         <List
@@ -41,13 +42,13 @@ export default function Home(){
        </ConteinerList>
          <SearchButtomList2>
             <TextSearch>Completd</TextSearch>
-            <AntDesign name="down" size={12} color="#979797" />
+            <AntDesign name="down" size={12} color="#ffffff" />
         </SearchButtomList2>
         <ConteinerList2>
             <List
             data={['1']}
             keyExtractor={item=>item}
-            renderItem={()=><Card task={"Buy Gracery"} data={"Today At 16:45"} numbericom={1}/>}
+            renderItem={()=><Card2 task={"Buy Gracery"} data={"Today At 16:45"} numbericom={1}/>}
             />
         </ConteinerList2>
     

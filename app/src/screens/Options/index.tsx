@@ -1,18 +1,29 @@
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 import { MaterialCommunityIcons,Fontisto,Feather,Ionicons } from '@expo/vector-icons';
-import { ButtomIcon,TextIcon,HorizontalLine, Container, Title,ContainerTitle, ContainerFull, Header,AvatarUser, ButtomAdd, TextButton } from "./style";
-import { TouchableOpacity, View} from 'react-native';
+import { ButtomIcon,TextIcon,HorizontalLine, Container, Title,ContainerTitle, ContainerFull, Header,AvatarUser, ButtomAdd, TextButton, ViewModal } from "./style";
+import { Alert, Modal, TouchableOpacity, View} from 'react-native';
+import { useState } from 'react';
+
 
 
 
 
 
 export default function Options(){
+  const [modalVisible, setModalVisible] = useState(false);
     return(
-    <ContainerFull >
-
+      <ViewModal>
+       
+       <Modal
+        animationType="slide"
+        visible={modalVisible}
+       >
+       <ContainerFull>
+    
         <Header>
-          <TouchableOpacity>
+          <TouchableOpacity
+          onPress={()=>setModalVisible(!modalVisible)}
+          >
             <Ionicons name='md-menu-outline' size={22} color={'#979797'} />
           </TouchableOpacity>
           <Title> Home Page</Title>
@@ -116,6 +127,9 @@ export default function Options(){
             </View>
         </Container>
         <ButtomAdd><TextButton>AddCategory</TextButton></ButtomAdd>
+       
     </ContainerFull>
+    </Modal>
+    </ViewModal>
     )
 }
