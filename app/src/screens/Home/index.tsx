@@ -4,8 +4,9 @@ import { AvatarUserHome, Conteiner, ConteinerList, ConteinerList2, ConteinerSear
 import { Feather,Ionicons ,AntDesign} from '@expo/vector-icons';
 import { useState } from "react";
 
-import Card from "../../Card/Card";
-import Card2 from "../../Card2/Card2";
+
+import Card2 from "../../components/Card2/Card2";
+import Card from "../../components/Card/Card";
 
 
 export default function Home(){
