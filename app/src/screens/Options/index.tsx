@@ -1,8 +1,8 @@
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 import { MaterialCommunityIcons,Fontisto,Feather,Ionicons } from '@expo/vector-icons';
-import { ButtomIcon,TextIcon,HorizontalLine, Container, Title,ContainerTitle, ContainerFull, Header,AvatarUser, ButtomAdd, TextButton, ViewModal } from "./style";
+import { ButtomIcon,TextIcon,HorizontalLine, Container, Title,ContainerTitle, ContainerFull, Header,AvatarUser, ButtomAdd, TextButton } from "./style";
 import { Alert, Modal, TouchableOpacity, View} from 'react-native';
-import { useState,useContext } from 'react';
+import { useState } from 'react';
 
 
 
@@ -16,8 +16,7 @@ export default function Options(props:PropsModal){
   const [modalVisible, setModalVisible] = useState(false);
  
     return(
-      <ViewModal>
-       
+    
        <Modal
         animationType="slide"
         visible={props.modal}
@@ -35,12 +34,13 @@ export default function Options(props:PropsModal){
           source={{ uri:'https://avatars.githubusercontent.com/u/111377254?v=4'}}
           />
         </Header>
+        
+        
+        <Container>
         <ContainerTitle>
           <Title>Choose Category</Title>
         </ContainerTitle>
          <HorizontalLine/>
-        <Container>
-            
             <View>
               <ButtomIcon
                 style={{backgroundColor:'#CCFF80',}}
@@ -129,11 +129,12 @@ export default function Options(props:PropsModal){
               </ButtomIcon>
               <TextIcon>Create New</TextIcon>
             </View>
+            <ButtomAdd><TextButton>AddCategory</TextButton></ButtomAdd>
         </Container>
-        <ButtomAdd><TextButton>AddCategory</TextButton></ButtomAdd>
+        
        
     </ContainerFull>
     </Modal>
-    </ViewModal>
+    
     )
 }

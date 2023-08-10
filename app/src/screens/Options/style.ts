@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 export const ContainerFull = styled.View`
   flex:1;
+  height: 100%;
   justify-content: center;
   align-items:center;
   background-color:#000;
@@ -15,26 +16,25 @@ export const  Header =  styled.View`
   flex-direction: row;
   align-items:center;
   justify-content: space-between;
-  background-color:#000;
+  
 `;
-export const ViewModal = styled.View`
-  height:100%;
-  background-color:#000;
- 
- 
-`;
+
 export const HorizontalLine = styled.View`
   width: 90%;
   height: 1px;
   background-color: #979797;
+  margin-left:15px;
+ 
 `;
 
 export const Container = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
+  align-items:center;
+  width: 90%;
   justify-content: space;
-  margin-left:30px;
-  background-color:#000;
+  background-color:#363636;
+  border-radius:5px
   
 `;
 
@@ -43,9 +43,10 @@ export const ButtomIcon = styled.TouchableOpacity`
   height: 64px;
   justify-content: center;
   align-items: center;
-  margin-block: 15px;
   border-radius: 10px;
-  margin: 15px;
+  margin: 10px;
+  margin-left: 37px;
+  
   
   
 `;
@@ -56,7 +57,8 @@ export const ContainerTitle = styled.View`
  align-items:center;
  height:50px;
  width:90%;
- background-color:#000;
+ margin-left:20px;
+
 
 `;
 
@@ -66,6 +68,7 @@ export const Title = styled.Text`
  text-align:center;
  color: #979797;
  padding:10px;
+
  
 
 `;
@@ -82,7 +85,7 @@ export const TextIcon = styled.Text`
  font-size:12px;
  text-align:center;
  color: #979797;
-
+ margin-left: 20px;
 
 `;
 
@@ -102,6 +105,7 @@ export const ButtomAdd = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  margin-left: 10%;
   border-radius: 5px;
 
 `;
