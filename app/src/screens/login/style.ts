@@ -19,7 +19,7 @@ export const  Label = styled.TextInput`
   border-radius: 5px;
   margin:10px;
   margin-left:15px;
-  
+  background-color:#535353;
   `;
 
 export const TextLogin = styled.Text`

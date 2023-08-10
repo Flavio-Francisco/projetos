@@ -21,12 +21,12 @@ export default function Login(){
             <TextLabel>Usename</TextLabel>
             <Label
             placeholder="Digite seu usário"
-            placeholderTextColor='#fff'
+            placeholderTextColor='#979797'
             />
              <TextLabel>Password</TextLabel>
             <Label
              placeholder="Digite sua senha"
-             placeholderTextColor='#fff'
+             placeholderTextColor='#979797'
              secureTextEntry={true}
             />
             <ButtomLogin
