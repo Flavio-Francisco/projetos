@@ -1,6 +1,6 @@
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 import { MaterialCommunityIcons,Fontisto,Feather,Ionicons } from '@expo/vector-icons';
-import { ButtomIcon,TextIcon,HorizontalLine, Container, Title,ContainerTitle, ContainerFull, Header,AvatarUser, ButtomAdd, TextButton } from "./style";
+import { ButtomIcon,TextIcon,HorizontalLine, Container, Title,ContainerTitle, ContainerFull, Header,AvatarUser, ButtomAdd, TextButton, ContaineModal } from "./style";
 import { Alert, Modal, TouchableOpacity, View} from 'react-native';
 import { useState } from 'react';
 
@@ -13,20 +13,19 @@ interface PropsModal{
 
 
 export default function Options(props:PropsModal){
-  const [modalVisible, setModalVisible] = useState(false);
+ 
  
     return(
-    
+      <ContaineModal>
+      
        <Modal
         animationType="slide"
         visible={props.modal}
        >
-       <ContainerFull>
+        <ContainerFull>
     
         <Header>
-          <TouchableOpacity
-          onPress={()=>setModalVisible(!modalVisible)}
-          >
+          <TouchableOpacity>
             <Ionicons name='md-menu-outline' size={22} color={'#979797'} />
           </TouchableOpacity>
           <Title> Home Page</Title>
@@ -34,7 +33,6 @@ export default function Options(props:PropsModal){
           source={{ uri:'https://avatars.githubusercontent.com/u/111377254?v=4'}}
           />
         </Header>
-        
         
         <Container>
         <ContainerTitle>
@@ -133,8 +131,9 @@ export default function Options(props:PropsModal){
         </Container>
         
        
-    </ContainerFull>
+        </ContainerFull>
     </Modal>
     
+     </ContaineModal>
     )
 }

@@ -6,16 +6,24 @@ export const ContainerFull = styled.View`
   justify-content: center;
   align-items:center;
   background-color:#000;
-  margin-top:-20%;
+ 
+`;
+export const ContaineModal = styled.View`
+  flex:1;
+  background-color:#000;
+
+  
 
 `;
 export const  Header =  styled.View`
   width:90%;
-  height: 74px; 
-  margin-left:30px;
+  height: 80px; 
+  margin-left:10px;
+  margin-bottom:30px;
   flex-direction: row;
   align-items:center;
   justify-content: space-between;
+
   
 `;
 
