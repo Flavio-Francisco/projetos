@@ -64,29 +64,30 @@ export const  ButtomIcons = styled.TouchableOpacity`
  margin-top:15px;
  border-radius:10px;
  background-color:#000;
- border:1px solid  #fFF;
+ border:1px solid  #8875FF;
  
 `;
 export const HorizontalLine = styled.View`
   width: 50%;
   height: 2px;
-  background-color:#fff;
+  background-color:#979797;
+  margin-top:20px
 `;
 export const TextHorizontal = styled.Text`
-  font-size: 12px;
-  color: #fff;
+  font-size: 16px;
+  color: #979797;
+  margin-top:20px
   
 `;
-export const ViewHorizontal =styled.View`
+export const ViewHorizontal = styled.View`
 flex-direction:row;
 align-items:center;
 width: 90%;
 gap:3px;
-background-color:#000;
 margin-top:15px;
 margin-left:10px;
 `;
-export const TextLink= styled.Text`
+export const TextLink = styled.Text`
   font-size: 12px;
   color: #fff;
   text-align:center;

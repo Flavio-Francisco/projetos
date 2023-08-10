@@ -24,7 +24,7 @@ export const  Label = styled.TextInput`
 
 export const TextLogin = styled.Text`
   font-size: 32px;
-  color: #fff;
+  color: #979797;
   font-weight: bold; 
   justify-content:center;
   margin-left:15px; 
@@ -68,7 +68,7 @@ export const  ButtomIcons = styled.TouchableOpacity`
  margin-top:45px;
  border-radius:5px;
  background-color:#000;
- border:1px solid  #fff;
+ border:1px solid  #8875FF;
  
  `;
  export const TextSocial = styled.Text`
@@ -78,3 +78,23 @@ export const  ButtomIcons = styled.TouchableOpacity`
   text-align: center;
   justify-content:center;
   `;
+  export const HorizontalLine = styled.View`
+  width: 50%;
+  height: 2px;
+  background-color:#979797;
+  margin-top:20px
+`;
+ export const TextHorizontal = styled.Text`
+  font-size: 16px;
+  color: #979797;
+  margin-top:20px
+  
+`;
+export const ViewHorizontal = styled.View`
+flex-direction:row;
+align-items:center;
+width: 90%;
+gap:3px;
+margin-top:15px;
+margin-left:10px;
+`;
