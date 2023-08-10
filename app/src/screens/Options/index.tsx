@@ -2,21 +2,25 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { MaterialCommunityIcons,Fontisto,Feather,Ionicons } from '@expo/vector-icons';
 import { ButtomIcon,TextIcon,HorizontalLine, Container, Title,ContainerTitle, ContainerFull, Header,AvatarUser, ButtomAdd, TextButton, ViewModal } from "./style";
 import { Alert, Modal, TouchableOpacity, View} from 'react-native';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 
 
 
 
+interface PropsModal{
+  modal : boolean,
+}
 
 
-export default function Options(){
+export default function Options(props:PropsModal){
   const [modalVisible, setModalVisible] = useState(false);
+ 
     return(
       <ViewModal>
        
        <Modal
         animationType="slide"
-        visible={modalVisible}
+        visible={props.modal}
        >
        <ContainerFull>
     

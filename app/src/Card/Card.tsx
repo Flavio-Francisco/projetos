@@ -10,6 +10,7 @@ import {  Conteiner,
      TasksTextP,
      TextIcon, 
      ViewButtomIcon} from "./style";
+import { useNavigation } from '@react-navigation/native';
     
 interface PropsList{
     task:string;
@@ -17,10 +18,16 @@ interface PropsList{
     numbericom:number;
     
 }
+
 export default function Card(props:PropsList){
+    const navigation = useNavigation()
     const [isChecked, setChecked] = useState(false);
-    const [modal, setModal] = useState(true);
-   
+  
+   function handleSubimit() {
+    navigation.navigate('Options',{
+        isChecked,
+    })
+   }
      
     return(
         <Conteiner>
@@ -30,7 +37,8 @@ export default function Card(props:PropsList){
             status={ isChecked === true ? 'checked' : 'unchecked' }
             color='#fff'
             uncheckedColor='#fff'
-            onPress={() => setChecked(!isChecked)}
+            onPress={() =>{ setChecked(!isChecked)             
+            }}
          />
 
         <ConteinerView>
@@ -41,8 +49,8 @@ export default function Card(props:PropsList){
                   <TextIcon>{props.data}</TextIcon>
                  <ViewButtomIcon>
                    <TasksButtom 
-            
-                    onPress={()=>setModal(!modal)}
+                    onPress={handleSubimit      
+                    }
                    >
                         <Feather name="home" size={18} color="#A30000" />
                         <TextIcon>Home</TextIcon>
