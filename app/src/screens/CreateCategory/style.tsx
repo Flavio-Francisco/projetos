@@ -68,7 +68,7 @@ export const  ButtomIconAdd = styled.TouchableOpacity`
  align-items:center;
  margin-top:25px;
  border-radius:5px;
- background-color:#979797;
+ background-color:#ffffff61;
  `;
 export const  ConteinerButton =  styled.View`
  width:90%;
