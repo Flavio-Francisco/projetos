@@ -1,12 +1,17 @@
 export declare global{
-import Options from './../screens/Options/index';
+import { CreateCategory } from './../screens/CreateCategory/index';
+
     namespace ReactNavigation{
         interface RootParamList{
             Login:undefined;
+            CreateCategory:{
+                modal:boolean
+            },
             HomeMemu:undefined;
             Options:{
-                isChecked:boolean
+                modal:boolean
             }
+
         }
     }
 }

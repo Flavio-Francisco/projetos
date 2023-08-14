@@ -1,8 +1,10 @@
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 import { MaterialCommunityIcons,Fontisto,Feather,Ionicons } from '@expo/vector-icons';
 import { ButtomIcon,TextIcon,HorizontalLine, Container, Title,ContainerTitle, ContainerFull, Header,AvatarUser, ButtomAdd, TextButton, ContaineModal } from "./style";
-import { Alert, Modal, TouchableOpacity, View} from 'react-native';
-import { useState } from 'react';
+import {  Modal, TouchableOpacity, View} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 
 
@@ -13,8 +15,12 @@ interface PropsModal{
 
 
 export default function Options(props:PropsModal){
- 
- 
+  const navigation = useNavigation();
+    function handleSubmit(){
+      navigation.navigate('CreateCategory',{
+        modal:true,
+      });
+    }
     return(
       <ContaineModal>
       
@@ -127,7 +133,11 @@ export default function Options(props:PropsModal){
               </ButtomIcon>
               <TextIcon>Create New</TextIcon>
             </View>
-            <ButtomAdd><TextButton>AddCategory</TextButton></ButtomAdd>
+            <ButtomAdd 
+             onPress={handleSubmit}
+             >
+              <TextButton>AddCategory</TextButton>
+            </ButtomAdd>
         </Container>
         
        
