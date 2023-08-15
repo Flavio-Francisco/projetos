@@ -1,28 +1,18 @@
-import BottomSheet, {
-    BottomSheetModalProvider
-  } from '@gorhom/bottom-sheet';
-import {  useMemo, useRef } from 'react';
+
 import { Ionicons , MaterialCommunityIcons,Feather} from '@expo/vector-icons'; 
-import { Conteiner,InputTask,TextTask,InputDescription,ButtomIcon,ConteinerIcon,ConteinerIconleft,ButtomIconLeft  } from './style';
+import { InputTask,TextTask,InputDescription,ButtomIcon,ConteinerIcon,ConteinerIconleft,ButtomIconLeft, ConteinerModal  } from './style';
+import { useState } from 'react';
+
+
 
 
 export function AddTask(){
-    const bottomSheetRef = useRef<BottomSheet>(null);
-    const snapPoints = useMemo(() => ['25%', '50%'], []);
-
-  // COLOCAR ESSE CODIGO NA TELA DE HOME!!
+    
+    const [modalVisible, setModalVisible] = useState(0);
     return(
-        <BottomSheetModalProvider>
-           <Conteiner >
-            <BottomSheet
-                
-                ref={bottomSheetRef}
-                index={1}
-                snapPoints={snapPoints}
-                backgroundStyle={{
-                    backgroundColor:'#363636',
-                }}
-                >
+       
+           <ConteinerModal >
+            
                 <TextTask>Add Task</TextTask>
                 <InputTask/>
                 <InputDescription/>
@@ -38,12 +28,14 @@ export function AddTask(){
                     <Feather name="flag" size={24} color="#fff" />
                     </ButtomIconLeft>
                 </ConteinerIconleft>
-                <ButtomIcon>
+                <ButtomIcon
+                onPress={()=>setModalVisible(1)}
+                >
                     <Ionicons name="ios-send-outline" size={24} color="#8687E7" />
                 </ButtomIcon>
                 </ConteinerIcon>
-            </BottomSheet>
-         </Conteiner>
-        </BottomSheetModalProvider>
+           
+         </ConteinerModal>
+    
     )
 }

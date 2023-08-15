@@ -1,9 +1,22 @@
 
 import { TouchableOpacity, Modal, Alert} from "react-native";
-import { AvatarUserHome, Conteiner, ConteinerList, ConteinerList2, ConteinerSearch, HeaderHome, List, Search, SearchButtom,SearchButtomList,SearchButtomList2,TextSearch,TitleHome } from "./style";
-import { Feather,Ionicons ,AntDesign} from '@expo/vector-icons';
-import { useState } from "react";
-
+import { AvatarUserHome,
+    TextModal ,
+    ButtomModal,
+    Conteiner,
+    ConteinerList,
+    ConteinerList2, 
+    ConteinerSearch,
+    HeaderHome,
+    List,Search,
+    SearchButtom,
+    SearchButtomList,
+    SearchButtomList2,
+    TextSearch,
+    TitleHome,InputTask,TextTask,InputDescription,ButtomIcon,ConteinerIcon,ConteinerIconleft,ButtomIconLeft, ConteinerModal } from "./style";
+import { Feather,Ionicons ,AntDesign,MaterialCommunityIcons} from '@expo/vector-icons';
+import { useMemo, useRef, useState } from "react";
+import BottomSheet from '@gorhom/bottom-sheet';
 
 import Card2 from "../../components/Card2/Card2";
 import Card from "../../components/Card/Card";
@@ -11,7 +24,12 @@ import { AddTask } from "../../components/AddTask";
 
 
 export default function Home(){
-    const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(0);
+    const bottomSheetRef = useRef<BottomSheet>(null);
+    const snapPoints =  ['1%', '50%'];
+
+  
+
     return(
     <Conteiner>
    
@@ -53,6 +71,50 @@ export default function Home(){
             renderItem={()=><Card2 task={"Buy Gracery"} data={"Today At 16:45"} numbericom={1}/>}
             />
         </ConteinerList2>
+        <ButtomModal
+        onPress={()=>setModalVisible(1)}
+        >
+            <TextModal>Add Task</TextModal>
+        </ButtomModal>
+        <BottomSheet
+                
+                ref={bottomSheetRef}
+                index={modalVisible}
+                snapPoints={snapPoints}
+                handleIndicatorStyle={{
+                    backgroundColor:'#363636',
+                }}
+                backgroundStyle={{
+                    backgroundColor:'#363636',
+                }}
+                >
+                      <ConteinerModal >
+            
+                            <TextTask>Add Task</TextTask>
+                          <InputTask/>
+                            <InputDescription/>
+                            <ConteinerIcon>
+                            <ConteinerIconleft >
+                                <ButtomIconLeft>
+                                <MaterialCommunityIcons name="timer-outline" size={24} color="#fff" />
+                                </ButtomIconLeft>
+                                <ButtomIconLeft>
+                                <Feather name="tag" size={24} color="#fff" />
+                                </ButtomIconLeft>
+                                <ButtomIconLeft>
+                                <Feather name="flag" size={24} color="#fff" />
+                                </ButtomIconLeft>
+                            </ConteinerIconleft>
+                            <ButtomIcon
+                            onPress={()=>setModalVisible(0)}
+                            >
+                                <Ionicons name="ios-send-outline" size={24} color="#8687E7" />
+                            </ButtomIcon>
+                            </ConteinerIcon>
+       
+            </ConteinerModal>
+
+                </BottomSheet>
         
     </Conteiner>
     )

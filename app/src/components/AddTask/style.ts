@@ -1,10 +1,9 @@
 import { styled } from "styled-components/native";
 
 
-export const Conteiner = styled.View`
+export const ConteinerModal = styled.View`
      flex: 1; 
-     align-items:center;
-     background-color:  #fff;
+     background-color:  #373737;
 `;
 export const ConteinerIcon = styled.View`
      flex-direction:row;  
