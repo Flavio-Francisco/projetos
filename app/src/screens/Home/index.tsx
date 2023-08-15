@@ -15,12 +15,12 @@ import { AvatarUserHome,
     TextSearch,
     TitleHome,InputTask,TextTask,InputDescription,ButtomIcon,ConteinerIcon,ConteinerIconleft,ButtomIconLeft, ConteinerModal } from "./style";
 import { Feather,Ionicons ,AntDesign,MaterialCommunityIcons} from '@expo/vector-icons';
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import BottomSheet from '@gorhom/bottom-sheet';
 
 import Card2 from "../../components/Card2/Card2";
 import Card from "../../components/Card/Card";
-import { AddTask } from "../../components/AddTask";
+
 
 
 export default function Home(){

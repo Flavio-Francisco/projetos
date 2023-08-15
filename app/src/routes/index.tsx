@@ -1,8 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
-import Stack from "./routes/stack.routes";
+import Stack from "./stack.routes";
 import { useState } from "react";
-import Tab from "./routes/tab.routes";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import Tab from "./tab.routes";
+
 
 
 
@@ -13,7 +13,7 @@ export default function Routes() {
     
       <NavigationContainer>
         
-        {!user ? <Tab/> : <Stack/> }
+        {user ? <Tab/> : <Stack/> }
 
         
       </NavigationContainer>

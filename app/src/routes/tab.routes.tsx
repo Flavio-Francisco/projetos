@@ -16,22 +16,7 @@ const{Navigator,Screen} = createMaterialBottomTabNavigator();
 export default function Tab() {
     return(
         <Navigator>
-         
-          <Screen
-          name='Login'
-          component={Login}
-        
-          />
-               <Screen
-          name='Options'
-          component={Options}
-        
-         />
-         <Screen
-          name='Regster'
-          component={Register}
-        
-          />
+       
          <Screen
           name='Home'
           component={Home}
@@ -42,11 +27,7 @@ export default function Tab() {
           component={CreateCategory}
        
            />  
-            <Screen
-          name='AddTask'
-          component={AddTask}
-       
-           />  
+         
         </Navigator>
     )
 }
