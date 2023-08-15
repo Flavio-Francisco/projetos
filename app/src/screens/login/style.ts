@@ -11,7 +11,7 @@ export const  ConteinerLogin =  styled.View`
 `;
 
 export const  Label = styled.TextInput`
-
+  color:#fff;
   width:90%;
   padding: 10px;
   font-size: 16px;
@@ -47,6 +47,7 @@ export const  ButtomLogin = styled.TouchableOpacity`
  margin-top:45px;
  border-radius:5px;
  background-color:#8875FF;
+ 
 
 `;
 export const TextButton = styled.Text`
