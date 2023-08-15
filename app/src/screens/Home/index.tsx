@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import Card2 from "../../components/Card2/Card2";
 import Card from "../../components/Card/Card";
+import { AddTask } from "../../components/AddTask";
 
 
 export default function Home(){
@@ -52,7 +53,7 @@ export default function Home(){
             renderItem={()=><Card2 task={"Buy Gracery"} data={"Today At 16:45"} numbericom={1}/>}
             />
         </ConteinerList2>
-    
+        
     </Conteiner>
     )
 }

@@ -8,7 +8,6 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-
 interface PropsModal{
   modal : boolean,
 }

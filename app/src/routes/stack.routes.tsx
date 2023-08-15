@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../screens/login';
 import Options from '../screens/Options';
 import { CreateCategory } from '../screens/CreateCategory';
+import { AddTask } from '../components/AddTask';
 
 
 
@@ -40,6 +41,15 @@ export default function Stack() {
             headerShown:false
           }}
          />
+           <Screen
+          name='AddTask'
+          component={AddTask}
+          options={{
+               
+            headerShown:false
+          }}
+       
+           />  
         </Navigator>
     )
 }
