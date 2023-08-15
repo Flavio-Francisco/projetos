@@ -11,7 +11,7 @@ import * as Yup from "yup";
 
 export default function Login(){
     const navigation = useNavigation();
-
+    // DA UMA OLHADA NA DOCUMENTAÇÃO DO FORMIK E NO YUP, NA QUESTÃO DO TRATAMENTO DE ERRO 
     // validação
     const SignupSchema = Yup.object().shape({
         name: Yup.string()
