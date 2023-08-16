@@ -58,6 +58,14 @@ export const TextButton = styled.Text`
   justify-content:center;
   `;
 
+export const TextErro = styled.Text`
+font-size: 12px;
+color: red;
+font-weight: bold;
+
+margin-left:20px;
+`;
+
 export const  ButtomIcons = styled.TouchableOpacity`
  width:90%;
  padding:15px;

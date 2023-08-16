@@ -1,39 +1,45 @@
 
-import { ButtomLogin, ConteinerLogin, Label,TextButton,TextLogin,TextLabel,ButtomIcons, TextSocial, ViewHorizontal, HorizontalLine, TextHorizontal } from "./style";
+import { TextErro,ButtomLogin, ConteinerLogin, Label,TextButton,TextLogin,TextLabel,ButtomIcons, TextSocial, ViewHorizontal, HorizontalLine, TextHorizontal } from "./style";
 import { Foundation,Fontisto  } from '@expo/vector-icons'; 
 import { useNavigation } from "@react-navigation/native";
 import { Formik } from 'formik' ;   
 import * as Yup from "yup";
+import{Text} from'react-native'
 
 
+interface MyFormValues {
+  user: string;
+  password:string;
+}
 
-
+const validationSchema = Yup.object().shape({
+  user: Yup.string()
+    .label('user')
+    .required('user is required'),
+    password: Yup.string()
+    .label('password')
+    .required('password is required'),
+});
 
 export default function Login(){
     const navigation = useNavigation();
     // DA UMA OLHADA NA DOCUMENTAÇÃO DO FORMIK E NO YUP, NA QUESTÃO DO TRATAMENTO DE ERRO 
     // validação
-    const SignupSchema = Yup.object().shape({
-        name: Yup.string()
-          .min(2, 'Too Short!')
-          .max(70, 'Too Long!')
-          .required('Required'),
-        email: Yup.string()
-          .email('Invalid email')
-          .required('Required'),
-      });
+ 
 
-
+    const FormValues:MyFormValues={user:'',password:''};
 
     return(
         <ConteinerLogin>
           
             <TextLogin>Login</TextLogin>
             <Formik
-            initialValues={{user: '',password:''}}
+            initialValues={FormValues}
+           
             onSubmit={values=>console.log(values)
-
+              
             }
+            validationSchema={validationSchema}
             >
                 {({ handleChange, handleBlur, handleSubmit, values,errors}) => (
               <>
@@ -42,11 +48,11 @@ export default function Login(){
             onChangeText={handleChange('user')}
             onBlur={handleBlur('user')}
             value={values.user}
-
             placeholder="Digite seu usário"
             placeholderTextColor='#979797'
-        
+
             />
+            {errors.user?(<TextErro>user Invalid</TextErro>):(<></>)}
              <TextLabel>Password</TextLabel>
             <Label
              onChangeText={handleChange('password')}
@@ -56,6 +62,7 @@ export default function Login(){
              placeholderTextColor='#979797'
              secureTextEntry={true}
             />
+            {errors.password?(<TextErro>password Invalid</TextErro>):(<></>)}
             <ButtomLogin
               onPress={()=>handleSubmit()}
             >
