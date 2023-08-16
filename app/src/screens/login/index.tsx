@@ -4,7 +4,7 @@ import { Foundation,Fontisto  } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { Formik } from 'formik' ;   
 import * as Yup from "yup";
-import{Text} from'react-native'
+
 
 
 interface MyFormValues {
@@ -18,14 +18,12 @@ const validationSchema = Yup.object().shape({
     .required('user is required'),
     password: Yup.string()
     .label('password')
-    .required('password is required'),
+    .required('senha obrigatoria').min(4, 'digite mais quatro digitos')
 });
 
 export default function Login(){
     const navigation = useNavigation();
-    // DA UMA OLHADA NA DOCUMENTAÇÃO DO FORMIK E NO YUP, NA QUESTÃO DO TRATAMENTO DE ERRO 
-    // validação
- 
+    
 
     const FormValues:MyFormValues={user:'',password:''};
 
@@ -62,7 +60,7 @@ export default function Login(){
              placeholderTextColor='#979797'
              secureTextEntry={true}
             />
-            {errors.password?(<TextErro>password Invalid</TextErro>):(<></>)}
+            {errors.password?(<TextErro>{errors.password}</TextErro>):(<></>)}
             <ButtomLogin
               onPress={()=>handleSubmit()}
             >
