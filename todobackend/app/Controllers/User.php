@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\TodoListModel;
+use app\Models\TodoListModelUser;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\RESTful\ResourceController;
 
@@ -13,7 +13,7 @@ class User extends ResourceController
 
     public function __construct(){
 
-        $this->model =  new TodoListModel();
+        $this->model =  new TodoListModelUser();
         
     }
 

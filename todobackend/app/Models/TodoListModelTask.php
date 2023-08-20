@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TodoListModel extends Model
+class TodoListModelTask extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'alunos';
+    protected $table            = 'task';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
@@ -15,16 +15,17 @@ class TodoListModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'name',
-        'registration',
-        'email',
+        'completed',
+        'user_id',
 
     ];
 
-    // Dates
-    protected $useTimestamps = true;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    //relacionamento entre as tabelas
+    public function usuario()
+    {
+        return $this->belongsTo(TodoListModelUser::class, 'usuario_id', 'id');
+    }
+
+
 
 }
