@@ -21,9 +21,9 @@ class User extends ResourceController
    public function get(){
     
 
-    var_dump('kmokm,lokm');
-    // $data = $this->model->findAll();
-    // return $this->respond($data);
+    
+     $data = $this->model->findAll();
+     return $this->respond($data);
    }
   
 
