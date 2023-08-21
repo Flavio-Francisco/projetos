@@ -1,7 +1,8 @@
 <?php
 namespace App\Controllers;
 
-use app\Models\TodoListModelUser;
+
+use App\Models\TodoListModelUser;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\RESTful\ResourceController;
 
@@ -25,7 +26,7 @@ class User extends ResourceController
    }
    // buscar 1 usuario
 
-   public function query($id=null){
+   public function show($id=null){
   
         $data = $this->model->getWhere(['id'=>$id])->getResult();
         if($data){

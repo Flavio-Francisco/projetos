@@ -16,7 +16,7 @@ class TodoListModelUser extends Model
     protected $allowedFields    = [
         'name',
         'email',
-        'senha',
+        'password',
 
     ];
 
