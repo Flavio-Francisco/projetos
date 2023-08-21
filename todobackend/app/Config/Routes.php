@@ -1,6 +1,7 @@
 <?php
 
 namespace Config;
+use PageNotFoundException\Pages;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
