@@ -20,11 +20,12 @@ class User extends ResourceController
 
    public function get(){
     
-  #pega todos os dados do banco
-    $data = $this->model->findAll();
-    return $this->respond($data);
+
+    var_dump('kmokm,lokm');
+    // $data = $this->model->findAll();
+    // return $this->respond($data);
    }
-   // buscar 1 usuario
+  
 
    public function show($id=null){
   
