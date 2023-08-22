@@ -64,10 +64,12 @@ class Task extends ResourceController
         return $this->response->getBody();
     }
 
-    public function delete($id = null){
-        $data = $this->model->find($id);
+    public function delete($user_id = null,$id = null){
 
-         if($data){
+        $modelUser = new TodoListModelUser();
+
+
+         if($modelUser->find($user_id)){
             $this->model->delete($id);
             $response = [
                 'status'   => 200,
@@ -81,4 +83,24 @@ class Task extends ResourceController
         
         return $this->failNotFound('Nenhum dado encontrado com id '.$id); 
     }
+    public function drop($id = null){
+
+        $modelUser = new TodoListModelUser();
+
+
+         if($modelUser->find($id)){
+            $this->model->where(['user_id'=>$id])->delete();
+            $response = [
+                'status'   => 200,
+                'error'    => null,
+                'messages' => [
+                    'success' => 'Dados removidos'
+                ]
+            ];
+            return $this->respondDeleted($response);
+        }
+        
+        return $this->failNotFound('Nenhum dado encontrado com id '.$id); 
+    }
+    
 }
