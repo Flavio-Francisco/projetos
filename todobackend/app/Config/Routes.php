@@ -34,6 +34,7 @@ $routes->post('/post', 'User::create');
 $routes->get('/', 'User::get');
 $routes->post('/query/(:segment)', 'User::show/$1');
 $routes->put('/update/(:segment)', 'User::update/$1');
+$routes->put('/delete/(:segment)', 'User::delete/$1');
 
         #Routes 
  $routes->get('/taskget', 'Task::get');

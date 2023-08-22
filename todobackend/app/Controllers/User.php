@@ -63,6 +63,7 @@ class User extends ResourceController
         
         return$this->respondUpdated($response);
     }
+    return $this->failNotFound('Nenhum dado encontrado com id '.$id); 
   }
 
     public function delete($id = null){
