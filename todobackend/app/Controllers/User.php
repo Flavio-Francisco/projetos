@@ -49,14 +49,21 @@ class User extends ResourceController
 
     
     $data = $this->request->getJSON();
+    var_dump($data);
+    if($this->model->find($id)){
     
-    if($this->model->update($id,$data)){
-    
-       
-            return $this->respond($data);
-        };
-        return $this->response->getBody();
+         $this->model->update($id,$data);
+          $response = [
+            'status'   => 200,
+            'error'    => null,
+            'messages' => [
+                'success' => 'Dados Atualizados com sucesso!!'
+            ]
+            ];
+        
+        return$this->respondUpdated($response);
     }
+  }
 
     public function delete($id = null){
         $data = $this->model->find($id);

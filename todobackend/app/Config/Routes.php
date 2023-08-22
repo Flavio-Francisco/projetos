@@ -33,6 +33,7 @@ $routes->set404Override();
 $routes->post('/post', 'User::create');
 $routes->get('/', 'User::get');
 $routes->post('/query/(:segment)', 'User::show/$1');
+$routes->put('/update/(:segment)', 'User::update/$1');
 
         #Routes 
  $routes->get('/taskget', 'Task::get');
