@@ -17,16 +17,15 @@ class Task extends ResourceController
 
         $this->model =  new TodoListModelTask();
        
-        
     }
 
    public function get(){
-    
-  #pega todos os dados do banco
+ 
     $data = $this->model->findAll();
+
     return $this->respond($data);
    }
-   // buscar 1 usuario
+  
 
    public function show($id=null){
         
@@ -44,8 +43,10 @@ class Task extends ResourceController
     $data = $this->request->getJSON();
     
    if ($modelUser->find($id)) {
+
         $this->model->save($data);
-    return $this->respondCreated($data, 'Task created');
+
+           return $this->respondCreated($data, 'Task created');
     }
     return $this->failServerError('Failed to create Task');
     
@@ -53,12 +54,9 @@ class Task extends ResourceController
 
    public function update($id = null){
 
-    
     $data = $this->request->getJSON();
     
     if($this->model->update($id,$data)){
-    
-       
             return $this->respond($data);
         };
         return $this->response->getBody();
