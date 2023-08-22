@@ -19,9 +19,7 @@ class User extends ResourceController
     }
 
    public function get(){
-    
 
-    
      $data = $this->model->findAll();
      return $this->respond($data);
    }

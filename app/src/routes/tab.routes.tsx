@@ -8,7 +8,7 @@ import Register from '../screens/register';
 import Home from '../screens/Home';
 import Options from '../screens/Options';
 import { CreateCategory } from '../screens/CreateCategory';
-import { AddTask } from '../components/AddTask';
+
 
 
 const{Navigator,Screen} = createMaterialBottomTabNavigator();
