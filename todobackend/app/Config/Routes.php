@@ -12,7 +12,7 @@ $routes = Services::routes();
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Task');
+$routes->setDefaultController('User');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -31,7 +31,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->post('/post', 'User::create');
-$routes->get('/', 'User::get');
+$routes->get('/get', 'User::get');
 $routes->post('/query/(:segment)', 'User::show/$1');
 $routes->put('/update/(:segment)', 'User::update/$1');
 $routes->put('/delete/(:segment)', 'User::delete/$1');

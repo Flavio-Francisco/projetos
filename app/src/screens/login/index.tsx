@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Formik } from 'formik' ;   
 import * as Yup from "yup";
 import { api } from "../../api/api";
+import { useState } from "react";
 
 
 
@@ -12,6 +13,9 @@ interface MyFormValues {
   user: string;
   password:string;
 }
+
+
+
 
 const validationSchema = Yup.object().shape({
   user: Yup.string()
@@ -23,10 +27,21 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function Login(){
+  const [validation, setValidation] = useState();
     const navigation = useNavigation();
     
-    function handlesubmite(){
-      const response = api.get('')
+   async function validadion(){
+       await api.get('/get')
+      .then(respose =>{
+        
+       setValidation(respose.data);
+        
+        console.log(respose.data);
+        
+      })
+      .catch(error=>{
+        console.error('Erro na requisição:', error);
+      })
 
     }
     const FormValues:MyFormValues={user:'',password:''};
@@ -67,6 +82,7 @@ export default function Login(){
             {errors.password?(<TextErro>{errors.password}</TextErro>):(<></>)}
             <ButtomLogin
               onPress={()=>handleSubmit()}
+              onPressIn={validadion}
             >
                 <TextButton>Login</TextButton> 
             </ButtomLogin>
