@@ -4,6 +4,7 @@ import { Foundation,Fontisto  } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { Formik } from 'formik' ;   
 import * as Yup from "yup";
+import { api } from "../../api/api";
 
 
 
@@ -24,7 +25,10 @@ const validationSchema = Yup.object().shape({
 export default function Login(){
     const navigation = useNavigation();
     
+    function handlesubmite(){
+      const response = api.get('')
 
+    }
     const FormValues:MyFormValues={user:'',password:''};
 
     return(
