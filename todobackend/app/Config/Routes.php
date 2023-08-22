@@ -12,7 +12,7 @@ $routes = Services::routes();
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('User');
+$routes->setDefaultController('Task');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -36,7 +36,8 @@ $routes->post('/query/(:segment)', 'User::show/$1');
 
         #Routes 
  $routes->get('/taskget', 'Task::get');
- $routes->post('/task/(:segment)', 'Task::createTask/$1');
+ $routes->post('/task/(:segment)','Task::createTask/$1');
+ $routes->post('/show/(:segment)', 'Task::show/$1');
 
 
 /*

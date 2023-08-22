@@ -16,14 +16,14 @@ class TodoListModelTask extends Model
     protected $allowedFields    = [
         'name',
         'completed',
-      
+        'user_id'
 
     ];
 
     //relacionamento entre as tabelas
     public function usuario()
     {
-        return $this->belongsTo(TodoListModelUser::class, 'usuario_id', 'id');
+        return $this->belongsTo(TodoListModelUser::class, 'user_id');
     }
 
 

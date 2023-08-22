@@ -16,7 +16,7 @@ class Task extends ResourceController
     public function __construct(){
 
         $this->model =  new TodoListModelTask();
-
+       
         
     }
 
@@ -30,27 +30,24 @@ class Task extends ResourceController
 
    public function show($id=null){
         
-        $data = $this->model->getWhere(['id'=>$id])->getResult();
+        $data = $this->model->getWhere(['user_id'=>$id])->getResult();
         if($data){
             return $this->respond($data);
         }
         return $this->failNotFound('Nenhum dado encontrado com id '.$id); 
    }
 
-   public function createTask($id=null){
+   public function createTask($id = null){
 
-    $modelUser =  new TodoListModelUser();
-
-     $modelUser->getwhere(['id'=>$id]);
+    $modelUser = new TodoListModelUser();
 
     $data = $this->request->getJSON();
     
-        #Olha esse metodo
-
-    if ( $this->model->getWhere(['user_id'=>$id])-> save($data)) {
-        return $this->respondCreated($data, 'User created');
+   if ($modelUser->find($id)) {
+        $this->model->save($data);
+    return $this->respondCreated($data, 'Task created');
     }
-    return $this->failServerError('Failed to create user');
+    return $this->failServerError('Failed to create Task');
     
    }
 
