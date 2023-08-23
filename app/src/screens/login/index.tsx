@@ -31,7 +31,7 @@ export default function Login(){
     const navigation = useNavigation();
     
    async function validadion(){
-       await api.get('/get')
+       await api.post('/show/1')
       .then(respose =>{
         
        setValidation(respose.data);
