@@ -8,9 +8,7 @@ import { CreateCategory } from './../screens/CreateCategory/index';
                 modal:boolean
             },
             HomeMemu:undefined;
-            Options:{
-                modal:boolean
-            }
+            Options:undefined;
 
         }
     }

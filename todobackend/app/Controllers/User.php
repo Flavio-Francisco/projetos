@@ -23,6 +23,15 @@ class User extends ResourceController
      $data = $this->model->findAll();
      return $this->respond($data);
    }
+
+// rota de altenticação para retonar user e password
+   public function auth(){
+    $data = $this->request->getJSON();
+
+    $query = $this->model->findAll();
+
+    return $this->respond($query);
+  }
   
 
    public function show($id=null){

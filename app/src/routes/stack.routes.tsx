@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../screens/login';
 import Options from '../screens/Options';
 import { CreateCategory } from '../screens/CreateCategory';
-import { AddTask } from '../components/AddTask';
+
 
 
 
