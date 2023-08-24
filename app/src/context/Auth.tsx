@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useState } from "react";
 import { api } from "../api/api";
 
-interface AuthUserData{
+export interface AuthUserData{
     
         id: number;
         name:string;
@@ -29,8 +29,6 @@ export interface AuthContextDataProps {
   export function  AuthContextProvider({ children }: AuthContextProviderProps){
     const [user, setUser] = useState<AuthUserData>({} as AuthUserData);
   
-
-
     async function singnIn(){
         await api.get('/get')
       

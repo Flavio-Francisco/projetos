@@ -7,7 +7,12 @@ import { CreateCategory } from './../screens/CreateCategory/index';
             CreateCategory:{
                 modal:boolean
             },
-            HomeMemu:undefined;
+            Home:{
+                id?:number;
+                name?: string;
+                email?:string;
+                password?: string;
+            }
             Options:undefined;
 
         }

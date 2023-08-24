@@ -13,6 +13,13 @@ interface MyFormValues {
   user: string;
   password: string;
 }
+interface UserProps {
+  id:number;
+  name: string;
+  email:string;
+  password: string;
+
+}
 
 
 
@@ -27,7 +34,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function Login() {
-  const [validation, setValidation] = useState();
+  const [validation, setValidation] = useState<UserProps>();
   const navigation = useNavigation();
 
   async function validadion() {
@@ -35,6 +42,7 @@ export default function Login() {
 
   }
   const FormValues: MyFormValues = { user: '', password: '' };
+  
 
   return (
     <ConteinerLogin>
@@ -44,20 +52,28 @@ export default function Login() {
         initialValues={FormValues}
 
         onSubmit={values => {
-           api.post('/show/1', {
-            username: values.user,
+           api.post('/auth', {
+            name: values.user,
             password: values.password
            })
             .then(respose => {
 
               setValidation(respose.data);
 
-              console.log(respose.data);
+              navigation.navigate('Home',{
+                id: validation?.id,
+                name: validation?.name,
+                password: validation?.password,
+                email:validation?.email
+                
+              });
 
             })
             .catch(error => {
               console.error('Erro na requisição:', error);
             })
+            
+           
         }
 
         }

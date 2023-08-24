@@ -8,6 +8,7 @@ import Register from '../screens/register';
 import Home from '../screens/Home';
 import Options from '../screens/Options';
 import { CreateCategory } from '../screens/CreateCategory';
+import Stack from './stack.routes';
 
 
 
@@ -16,6 +17,8 @@ const{Navigator,Screen} = createMaterialBottomTabNavigator();
 export default function Tab() {
     return(
         <Navigator>
+          
+        
        
          <Screen
           name='Home'
@@ -27,6 +30,8 @@ export default function Tab() {
           component={CreateCategory}
        
            />  
+         
+         
          
         </Navigator>
     )
