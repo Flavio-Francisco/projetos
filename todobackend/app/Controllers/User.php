@@ -26,12 +26,22 @@ class User extends ResourceController
 
 // rota de altenticação para retonar user e password
    public function auth(){
-    $data = $this->request->getJSON();
+    $query = $this->request->getJSON();
 
-    $query = $this->model->findAll();
+    $data = $this->model->where('name',$query->name )->first();
 
-    return $this->respond($query);
+    if($data['name'] ==$query->name && $data['password'] == $query->password){
+
+        return $this->respond($data);
+
+    }
+  
+
+    return$this->failNotFound('Usuário não encontrado ');
+
   }
+
+
   
 
    public function show($id=null){
