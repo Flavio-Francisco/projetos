@@ -5,7 +5,11 @@ import { useNavigation } from "@react-navigation/native";
 import { Formik } from 'formik';
 import * as Yup from "yup";
 import { api } from "../../api/api";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/Auth";
+import React from "react";
+
+
 
 
 
@@ -35,12 +39,10 @@ const validationSchema = Yup.object().shape({
 
 export default function Login() {
   const [validation, setValidation] = useState<UserProps>();
-  const navigation = useNavigation();
 
-  async function validadion() {
-
-
-  }
+ 
+  const {singnIn} = useContext(AuthContext)
+  
   const FormValues: MyFormValues = { user: '', password: '' };
   
 
@@ -52,26 +54,22 @@ export default function Login() {
         initialValues={FormValues}
 
         onSubmit={values => {
-           api.post('/auth', {
-            name: values.user,
-            password: values.password
-           })
-            .then(respose => {
-
-              setValidation(respose.data);
-
-              navigation.navigate('Home',{
-                id: validation?.id,
-                name: validation?.name,
-                password: validation?.password,
-                email:validation?.email
+        console.log(values);
+        
+            api.post('/auth', {
+              name: values.user,
+              password:values.password
+             })
+              .then(respose => {
+                  singnIn(respose.data)
+                  console.log(respose.data)
                 
-              });
-
-            })
-            .catch(error => {
-              console.error('Erro na requisição:', error);
-            })
+              })
+              .catch(erro=>{
+                console.error(erro)
+              })
+          
+  
             
            
         }
@@ -103,7 +101,7 @@ export default function Login() {
             {errors.password ? (<TextErro>{errors.password}</TextErro>) : (<></>)}
             <ButtomLogin
               onPress={() => handleSubmit()}
-              onPressIn={validadion}
+             
             >
               <TextButton>Login</TextButton>
             </ButtomLogin>

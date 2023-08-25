@@ -1,6 +1,7 @@
-import { ReactNode, createContext, useState } from "react";
+import React from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 import { api } from "../api/api";
-import { AuthUserData } from "./Auth";
+import { AuthContext } from "./Auth";
 
 interface TaskProps{
   id:number;
@@ -32,10 +33,10 @@ export interface AuthContextDataProps {
 
   export function  AuthContextProviderTask({ children }: AuthContextProviderProps){
     const [task, setTask] = useState<TaskProps>({} as TaskProps);
-
-
-    async function taskQuery(id:number){
-      await api.post(`/show/${id}`)
+     const{user} = useContext(AuthContext); 
+ 
+    async function taskQuery(){
+      await api.post(`/show/${user.id}`)
       
         .then (response=>{
          setTask(response.data)

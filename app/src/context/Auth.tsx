@@ -1,4 +1,5 @@
-import { ReactNode, createContext, useState } from "react";
+import React from "react";
+import { ReactNode, SetStateAction, createContext, useState } from "react";
 import { api } from "../api/api";
 
 export interface AuthUserData{
@@ -13,7 +14,7 @@ export interface AuthUserData{
 
 export interface AuthContextDataProps {
     user: AuthUserData;
-    singnIn:()=>void;
+    singnIn:(data:AuthUserData)=>Promise<void>;
     singnOut:()=>void;
   }
 
@@ -29,12 +30,10 @@ export interface AuthContextDataProps {
   export function  AuthContextProvider({ children }: AuthContextProviderProps){
     const [user, setUser] = useState<AuthUserData>({} as AuthUserData);
   
-    async function singnIn(){
-        await api.get('/get')
-      
-         .then (response=>{
-            setUser(response.data)
-         })
+    async function singnIn(data:AuthUserData){
+         
+    setUser(data)
+        
   }
 
 
@@ -48,7 +47,7 @@ export interface AuthContextDataProps {
 }
    
     return(
-        <AuthContext.Provider 
+        <AuthContext.Provider
         value={{
               singnOut,
                user,

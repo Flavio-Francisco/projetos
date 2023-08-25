@@ -6,6 +6,7 @@ import Login from '../screens/login';
 import Options from '../screens/Options';
 import { CreateCategory } from '../screens/CreateCategory';
 import Home from '../screens/Home';
+import React from 'react';
 
 
 
@@ -42,14 +43,7 @@ export default function Stack() {
             headerShown:false
           }}
           />
-          <Screen
-          name='Home'
-          component={Home}
-          options={{
-               
-            headerShown:false
-          }}
-         />
+      
          
         </Navigator>
     )

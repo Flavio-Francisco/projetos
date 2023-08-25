@@ -9,6 +9,7 @@ import Home from '../screens/Home';
 import Options from '../screens/Options';
 import { CreateCategory } from '../screens/CreateCategory';
 import Stack from './stack.routes';
+import React from 'react';
 
 
 
@@ -18,8 +19,10 @@ export default function Tab() {
     return(
         <Navigator>
           
-        
-       
+          <Screen
+          name='Login'
+          component={Login}
+           />
          <Screen
           name='Home'
           component={Home}
@@ -30,9 +33,6 @@ export default function Tab() {
           component={CreateCategory}
        
            />  
-         
-         
-         
         </Navigator>
     )
 }
