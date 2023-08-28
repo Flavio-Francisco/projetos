@@ -25,7 +25,16 @@ export default function Stack() {
                
             headerShown:false
           }}
+          
         
+          />
+            <Screen
+          name='Home'
+          component={Home}
+          options={{
+               
+            headerShown:false
+          }}
           />
          <Screen
           name='Options'

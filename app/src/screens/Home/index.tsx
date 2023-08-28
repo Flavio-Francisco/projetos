@@ -21,30 +21,46 @@ import BottomSheet from '@gorhom/bottom-sheet';
 
 import Card2 from "../../components/Card2/Card2";
 import Card from "../../components/Card/Card";
-import { AuthContextTask } from "../../context/Task";
+import { AuthContextTask, TaskProps } from "../../context/Task";
 import { AuthContext, AuthUserData } from "../../context/Auth";
+import React from "react";
+import { FlatList } from "react-native-gesture-handler";
+import { api } from "../../api/api";
 
 
 
 
 export default function Home(props: AuthUserData) {
     const [modalVisible, setModalVisible] = useState(0);
+    const [list, setList] = useState<TaskProps[]>([]);
+    const [listComp, setListComp] = useState<TaskProps[]>([]);
+    
+
     const bottomSheetRef = useRef<BottomSheet>(null);
     const snapPoints = ['1%', '50%'];
-    const { taskQuery, task } = useContext(AuthContextTask)
+    const { taskQuery, task ,taskComplet} = useContext(AuthContextTask)
     const { user } = useContext(AuthContext)
-
+    
     async function handleTask() {
         await taskQuery(user.id);
+      
     }
     useEffect(() => {
         console.log(user)
         handleTask()
-
         console.log(task);
-
+         api.post(`/show/${user.id}`)
+      
+        .then (response=>{
+             
+                setList(response.data)
+    
+        })
+    
     }, [])
 
+    
+   
     return (
         <Conteiner>
 
@@ -69,10 +85,10 @@ export default function Home(props: AuthUserData) {
                 <AntDesign name="down" size={12} color="#ffffff" />
             </SearchButtomList>
             <ConteinerList>
-                <List
-                    data={['1', '2', '3']}
-                    keyExtractor={item => item}
-                    renderItem={() => <Card task={"Do Math HomeWork"} data={"Today At 16:45"} numbericom={1} />}
+                <FlatList
+                    data={list}
+                    keyExtractor={item => item.name}
+                    renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} numbericom={1} />}
                 />
             </ConteinerList>
             <SearchButtomList2>
@@ -80,10 +96,10 @@ export default function Home(props: AuthUserData) {
                 <AntDesign name="down" size={12} color="#ffffff" />
             </SearchButtomList2>
             <ConteinerList2>
-                <List
-                    data={['1']}
-                    keyExtractor={item => item}
-                    renderItem={() => <Card2 task={"Buy Gracery"} data={"Today At 16:45"} numbericom={1} />}
+                <FlatList
+                    data={listComp}
+                    keyExtractor={item => item.name}
+                    renderItem={(item) => <Card2 task={item.item.name} data={"Today At 16:45"} numbericom={1} />}
                 />
             </ConteinerList2>
             <ButtomModal

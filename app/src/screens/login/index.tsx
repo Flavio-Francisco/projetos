@@ -39,7 +39,7 @@ const validationSchema = Yup.object().shape({
 
 export default function Login() {
   const [validation, setValidation] = useState<UserProps>();
-
+  const {navigate} = useNavigation()
  
   const {singnIn} = useContext(AuthContext)
   
@@ -62,6 +62,7 @@ export default function Login() {
              })
               .then(respose => {
                   singnIn(respose.data)
+                  navigate('Home')
                   console.log(respose.data)
                 
               })

@@ -2,11 +2,12 @@ import React from "react";
 import { ReactNode, createContext, useContext, useState } from "react";
 import { api } from "../api/api";
 import { AuthContext } from "./Auth";
+import DataTableRow from "react-native-paper/lib/typescript/src/components/DataTable/DataTableRow";
 
-interface TaskProps{
+export interface TaskProps{
   id:number;
   name:string;
-  completed:string;
+  completed:boolean;
   user_id:number;
   
   }
@@ -15,10 +16,12 @@ interface TaskProps{
 
 export interface AuthContextDataProps {
     task:TaskProps;
+    taskComplet:TaskProps;
     taskQuery:(id:number)=>Promise<void>  ;
     taskQueryUnique:( id:number)=>void;
     taskDeleteUnique:( id:number, user_id:number)=>void;
     taskDrop:( id:number)=>void;
+
 
   }
 
@@ -33,8 +36,10 @@ export interface AuthContextDataProps {
 
   export function  AuthContextProviderTask({ children }: AuthContextProviderProps){
     const [task, setTask] = useState<TaskProps>({} as TaskProps);
+    const [taskComplet, setTaskComplet] = useState<TaskProps>({} as TaskProps);
      const{user} = useContext(AuthContext); 
  
+
     async function taskQuery(){
       await api.post(`/show/${user.id}`)
       
@@ -66,15 +71,22 @@ export interface AuthContextDataProps {
         })
         
       }
- 
+
+      if(task.completed==true){
+        setTaskComplet(task)
+      
+      }
+     
     return(
         <AuthContextTask.Provider 
         value={{
               task,
+              taskComplet,
               taskQuery,
               taskQueryUnique,
               taskDeleteUnique,
-              taskDrop               
+              taskDrop ,
+                         
         }}
         >
 

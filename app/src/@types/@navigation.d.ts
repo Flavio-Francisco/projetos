@@ -7,12 +7,8 @@ import { CreateCategory } from './../screens/CreateCategory/index';
             CreateCategory:{
                 modal:boolean
             },
-            Home:{
-                id?:number;
-                name?: string;
-                email?:string;
-                password?: string;
-            }
+            Home:undefined
+            
             Options:undefined;
 
         }

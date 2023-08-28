@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactNode, SetStateAction, createContext, useState } from "react";
 import { api } from "../api/api";
+import { useNavigation } from "@react-navigation/native";
 
 export interface AuthUserData{
     
@@ -29,10 +30,14 @@ export interface AuthContextDataProps {
 
   export function  AuthContextProvider({ children }: AuthContextProviderProps){
     const [user, setUser] = useState<AuthUserData>({} as AuthUserData);
+   
   
     async function singnIn(data:AuthUserData){
-         
-    setUser(data)
+if (data) {
+  setUser(data)    
+  
+}
+    
         
   }
 

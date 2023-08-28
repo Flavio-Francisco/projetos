@@ -41,6 +41,7 @@ $routes->put('/delete/(:segment)', 'User::delete/$1');
  $routes->get('/taskget', 'Task::get');
  $routes->post('/task/(:segment)','Task::createTask/$1');
  $routes->post('/show/(:segment)', 'Task::show/$1');
+ $routes->post('/showCompleted/(:segment)', 'Task::showCompleted/$1');
  $routes->delete('/deletetask/(:segment)/(:segment)', 'Task::delete/$1/$2');
  $routes->delete('/drop/(:segment)', 'Task::drop/$1');
 
