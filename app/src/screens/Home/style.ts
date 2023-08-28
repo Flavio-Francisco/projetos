@@ -11,7 +11,7 @@ export const  Conteiner =  styled.View`
 `;
 
 export const  ConteinerList =  styled.View`
-  height:300px;
+  height:250px;
   justify-content:center;
   text-align: center;
   margin-bottom:20px;

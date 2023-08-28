@@ -7,6 +7,7 @@ import Options from '../screens/Options';
 import { CreateCategory } from '../screens/CreateCategory';
 import Home from '../screens/Home';
 import React from 'react';
+import Register from '../screens/register';
 
 
 
@@ -47,6 +48,14 @@ export default function Stack() {
           <Screen
           name='CreateCategory'
           component={CreateCategory}
+          options={{
+               
+            headerShown:false
+          }}
+          />
+           <Screen
+          name='Register'
+          component={Register}
           options={{
                
             headerShown:false

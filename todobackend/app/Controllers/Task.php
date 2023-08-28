@@ -61,8 +61,19 @@ public function showCompleted($id = null) {
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
 }
+ public function showAtera($id=null) {
+    $data = $this->request->getJSON();
+     $task = $this->model->findAll();
+   
+     //  var_dump($task);
+    
+     var_dump($reult);
+    $update = $task->update($id,$task);
+    //   return $this->respondUpdated($update);
 
 
+   
+}
 
 
    public function createTask($id = null){
@@ -70,7 +81,7 @@ public function showCompleted($id = null) {
     $modelUser = new TodoListModelUser();
 
     $data = $this->request->getJSON();
-
+    
 
     
    if ($modelUser->find($id)) {

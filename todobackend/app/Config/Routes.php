@@ -44,8 +44,9 @@ $routes->put('/delete/(:segment)', 'User::delete/$1');
  $routes->post('/showCompleted/(:segment)', 'Task::showCompleted/$1');
  $routes->delete('/deletetask/(:segment)/(:segment)', 'Task::delete/$1/$2');
  $routes->delete('/drop/(:segment)', 'Task::drop/$1');
+ $routes->put('/showAtera/(:segment)', 'Task::showAtera/1$');
 
-
+ 
 /*
  * --------------------------------------------------------------------
  * Additional Routing

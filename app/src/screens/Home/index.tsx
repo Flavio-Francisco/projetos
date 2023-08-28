@@ -1,4 +1,4 @@
-import { TouchableOpacity, Modal, Alert } from "react-native";
+import { TouchableOpacity,ActivityIndicator } from "react-native";
 import {
     AvatarUserHome,
     TextModal,
@@ -29,6 +29,7 @@ import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import { api } from "../../api/api";
 import { TextErro } from "../login/style";
+import SpinnerTask from './../../components/Spinner/index';
 
 interface MyFormValues {
     task: string;
@@ -41,7 +42,7 @@ export default function Home() {
     const [list, setList] = useState<TaskProps[]>([]);
     const [listComp, setListComp] = useState<TaskProps[]>([]);
     const [newTask,setNewTask]= useState('')
-
+    const [loading, setLoading] = useState<boolean>(true);
     const bottomSheetRef = useRef<BottomSheet>(null);
     const snapPoints = ['1px', '90%'];
  
@@ -84,15 +85,16 @@ export default function Home() {
                 completed:false,
                 user_id:user.id
             }) 
-            
-        
+
     }
-    
      useEffect(() => {
+        setTimeout(() => {  
+            setLoading(false);
+          }, 2000);
         
       queryComp();
        query();
-       createTask();
+      
     }, [])
 
    
@@ -120,23 +122,29 @@ export default function Home() {
                 <TextSearch>Today </TextSearch>
                 <AntDesign name="down" size={12} color="#ffffff" />
             </SearchButtomList>
-            <ConteinerList>
+            <ConteinerList>{loading?( <ActivityIndicator size={30} color={'#ffffff'}/>):
+                
+               
                 <FlatList
                     data={Task}
                     keyExtractor={item=>item.name }
-                    renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} numbericom={1} />}
+                    renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} numbericom={1}compreted={false} />}
                 />
+            }
             </ConteinerList>
+          
             <SearchButtomList2>
                 <TextSearch>Completd</TextSearch>
                 <AntDesign name="down" size={12} color="#ffffff" />
             </SearchButtomList2>
             <ConteinerList2>
+                {loading?( <ActivityIndicator size={30} color={'#ffffff'}/>):
                 <FlatList
                     data={TaskComp}
                     keyExtractor={item => item.name}
                     renderItem={(item) => <Card2 task={item.item.name} data={"Today At 16:45"} numbericom={1} />}
                 />
+              }
             </ConteinerList2>
             <ButtomModal
                 onPress={() => setModalVisible(1)}
@@ -150,6 +158,7 @@ export default function Home() {
                 ref={bottomSheetRef}
                 index={modalVisible}
                 snapPoints={snapPoints}
+                
                 handleIndicatorStyle={{
                     backgroundColor: '#363636',
                 }}

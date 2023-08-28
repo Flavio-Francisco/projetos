@@ -17,6 +17,7 @@ interface PropsList{
     task:string;
     data:string;
     numbericom:number;
+    compreted:boolean
     
 }
 
@@ -28,7 +29,7 @@ export default function Card(props:PropsList){
     navigation.navigate('Options',{
         isChecked,
     })
-   
+       props.compreted = false
    }  
     return(
         <Conteiner>
@@ -38,7 +39,7 @@ export default function Card(props:PropsList){
             status={ isChecked === true ? 'checked' : 'unchecked' }
             color='#fff'
             uncheckedColor='#fff'
-            onPress={() =>{ setChecked(!isChecked)             
+            onPress={() =>{ setChecked(!props.compreted)             
             }}
          />
 
