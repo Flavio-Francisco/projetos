@@ -2,10 +2,10 @@ import React from "react";
 import { ReactNode, createContext, useContext, useState } from "react";
 import { api } from "../api/api";
 import { AuthContext } from "./Auth";
-import DataTableRow from "react-native-paper/lib/typescript/src/components/DataTable/DataTableRow";
+
 
 export interface TaskProps{
-  id:number;
+  id:string;
   name:string;
   completed:boolean;
   user_id:number;

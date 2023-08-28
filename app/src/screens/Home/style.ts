@@ -16,7 +16,7 @@ export const List = styled(FlatList  as new (props:FlatListProps<string>) => Fla
  
 `;
 export const  ConteinerList =  styled.View`
-  height:43%;
+  height:35%;
   justify-content:center;
   text-align: center;
 
@@ -25,8 +25,8 @@ export const  ConteinerList2 =  styled.View`
  
   justify-content:center;
   text-align: center;
-  margin-bottom:20px
-
+  margin-bottom:20px;
+  height:25%;
 `;
 export const  ConteinerSearch =  styled.View`
 
@@ -164,8 +164,8 @@ export const TextTask = styled.Text`
       color:#fff;
 `;
 export const InputTask = styled.TextInput.attrs({
-    placeholder:'Do math homework',
-    placeholderTextColor:'#fff',
+    placeholder:'new task',
+    placeholderTextColor:'#979797',
 })`
     width:90%px;
     height:43px;

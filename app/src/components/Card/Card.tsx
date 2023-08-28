@@ -1,3 +1,4 @@
+import  React  from 'react';
 import { RadioButton } from 'react-native-paper';
 import { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
@@ -27,8 +28,8 @@ export default function Card(props:PropsList){
     navigation.navigate('Options',{
         isChecked,
     })
-   }
-     
+   
+   }  
     return(
         <Conteiner>
            

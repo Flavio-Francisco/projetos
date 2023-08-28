@@ -8,7 +8,7 @@ import {
     ConteinerList2,
     ConteinerSearch,
     HeaderHome,
-    List, Search,
+    Search,
     SearchButtom,
     SearchButtomList,
     SearchButtomList2,
@@ -30,37 +30,54 @@ import { api } from "../../api/api";
 
 
 
-export default function Home(props: AuthUserData) {
+export default function Home() {
     const [modalVisible, setModalVisible] = useState(0);
     const [list, setList] = useState<TaskProps[]>([]);
     const [listComp, setListComp] = useState<TaskProps[]>([]);
-    
+   
 
     const bottomSheetRef = useRef<BottomSheet>(null);
     const snapPoints = ['1%', '50%'];
-    const { taskQuery, task ,taskComplet} = useContext(AuthContextTask)
     const { user } = useContext(AuthContext)
-    
-    async function handleTask() {
-        await taskQuery(user.id);
+
+    const Task =  Object.entries(list).map(([key, value]) => ({
+        ...value,
+        id: parseInt(key)
+      }));
+
+      const TaskComp =  Object.entries(listComp).map(([key, value]) => ({
+        ...value,
+        id: parseInt(key)
+      }));
+
+    async function query(){
+      await  api.post(`/showCompleted/${user.id}`)
       
+        .then (response=>{
+            
+                setListComp(response.data)
+                    console.log(listComp);
+                    console.log('====================================');
+                    console.log(list);
+                    console.log('====================================');      
+        })
+
     }
-    useEffect(() => {
+        useEffect(() => {
         console.log(user)
-        handleTask()
-        console.log(task);
+        
          api.post(`/show/${user.id}`)
       
         .then (response=>{
              
                 setList(response.data)
-    
+                console.log(list);
+                
         })
+       query();
     
     }, [])
 
-    
-   
     return (
         <Conteiner>
 
@@ -86,8 +103,8 @@ export default function Home(props: AuthUserData) {
             </SearchButtomList>
             <ConteinerList>
                 <FlatList
-                    data={list}
-                    keyExtractor={item => item.name}
+                    data={Task}
+                    keyExtractor={item=>item.name }
                     renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} numbericom={1} />}
                 />
             </ConteinerList>
@@ -97,7 +114,7 @@ export default function Home(props: AuthUserData) {
             </SearchButtomList2>
             <ConteinerList2>
                 <FlatList
-                    data={listComp}
+                    data={TaskComp}
                     keyExtractor={item => item.name}
                     renderItem={(item) => <Card2 task={item.item.name} data={"Today At 16:45"} numbericom={1} />}
                 />

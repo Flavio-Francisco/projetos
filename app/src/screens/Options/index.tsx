@@ -1,3 +1,4 @@
+import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 import { MaterialCommunityIcons,Fontisto,Feather,Ionicons } from '@expo/vector-icons';
 import { ButtomIcon,TextIcon,HorizontalLine, Container, Title,ContainerTitle, ContainerFull, Header,AvatarUser, ButtomAdd, TextButton, ContaineModal } from "./style";

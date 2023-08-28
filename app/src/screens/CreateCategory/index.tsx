@@ -1,3 +1,4 @@
+import React from "react";
 import { FlatList } from "react-native";
 import CardColor from "../../components/CardColor";
 import { Conteiner, 

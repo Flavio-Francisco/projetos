@@ -9,7 +9,9 @@ import { CreateCategory } from './../screens/CreateCategory/index';
             },
             Home:undefined
             
-            Options:undefined;
+            Options:{
+                isChecked:boolean
+            }
 
         }
     }
