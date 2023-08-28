@@ -1,6 +1,5 @@
-import { FlatList, FlatListProps } from "react-native";
-import styled from "styled-components/native";
 
+import styled from "styled-components/native";
 
 
 
@@ -10,22 +9,20 @@ export const  Conteiner =  styled.View`
   background-color:#000;
 
 `;
-export const List = styled(FlatList  as new (props:FlatListProps<string>) => FlatList<string> )`
- width:100%;
- height:72px;
- 
-`;
+
 export const  ConteinerList =  styled.View`
-  height:35%;
+  height:300px;
   justify-content:center;
   text-align: center;
+  margin-bottom:20px;
+
 
 `;
 export const  ConteinerList2 =  styled.View`
  
   justify-content:center;
   text-align: center;
-  margin-bottom:20px;
+  margin-bottom:-25px;
   height:25%;
 `;
 export const  ConteinerSearch =  styled.View`
@@ -34,6 +31,7 @@ export const  ConteinerSearch =  styled.View`
   flex-direction:row;
   width:90%;
   margin:10px;
+  
  
 `;
 
@@ -72,8 +70,8 @@ export const SearchButtomList2 = styled.TouchableOpacity`
 export const ButtomModal = styled.TouchableOpacity`
 width:21%;
 height:52px; 
-margin-top:0px;
 margin-left:73%;
+margin-bottom:25px;
 background-color:#979797;
 border-radius:5px;
 align-items:center;
@@ -94,7 +92,7 @@ align-items:center;
 justify-content:space-between;
 width:90%;
 margin-left:10px;
-margin-top:-10px;
+margin-top:55px;
 
 `;
 export const TitleHome = styled.Text`
@@ -167,7 +165,7 @@ export const InputTask = styled.TextInput.attrs({
     placeholder:'new task',
     placeholderTextColor:'#979797',
 })`
-    width:90%px;
+    width:90%;
     height:43px;
     font-size:18px;
     margin:15px;

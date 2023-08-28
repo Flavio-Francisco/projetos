@@ -23,6 +23,7 @@ export interface AuthContextDataProps {
     taskDrop:( id:number)=>void;
 
 
+
   }
 
   interface AuthContextProviderProps {
@@ -46,7 +47,9 @@ export interface AuthContextDataProps {
         .then (response=>{
          setTask(response.data)
         })
-   }
+     }
+
+    
       async function taskQueryUnique(id:number){
         await api.post(`/show/${id}`)
         
@@ -70,12 +73,12 @@ export interface AuthContextDataProps {
           setTask(response.data)
         })
         
-      }
+     }
 
       if(task.completed==true){
         setTaskComplet(task)
       
-      }
+     }
      
     return(
         <AuthContextTask.Provider 

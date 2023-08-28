@@ -18,6 +18,8 @@ import {
 import { Feather, Ionicons, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useContext, useRef, useState, useEffect } from "react";
 import BottomSheet from '@gorhom/bottom-sheet';
+import { Formik } from 'formik';
+import * as Yup from "yup";
 
 import Card2 from "../../components/Card2/Card2";
 import Card from "../../components/Card/Card";
@@ -26,18 +28,24 @@ import { AuthContext, AuthUserData } from "../../context/Auth";
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import { api } from "../../api/api";
+import { TextErro } from "../login/style";
 
-
+interface MyFormValues {
+    task: string;
+    
+  }
 
 
 export default function Home() {
     const [modalVisible, setModalVisible] = useState(0);
     const [list, setList] = useState<TaskProps[]>([]);
     const [listComp, setListComp] = useState<TaskProps[]>([]);
-   
+    const [newTask,setNewTask]= useState('')
 
     const bottomSheetRef = useRef<BottomSheet>(null);
-    const snapPoints = ['1%', '50%'];
+    const snapPoints = ['1px', '90%'];
+ 
+    
     const { user } = useContext(AuthContext)
 
     const Task =  Object.entries(list).map(([key, value]) => ({
@@ -49,24 +57,8 @@ export default function Home() {
         ...value,
         id: parseInt(key)
       }));
-
     async function query(){
-      await  api.post(`/showCompleted/${user.id}`)
-      
-        .then (response=>{
-            
-                setListComp(response.data)
-                    console.log(listComp);
-                    console.log('====================================');
-                    console.log(list);
-                    console.log('====================================');      
-        })
-
-    }
-        useEffect(() => {
-        console.log(user)
-        
-         api.post(`/show/${user.id}`)
+        api.post(`/show/${user.id}`)
       
         .then (response=>{
              
@@ -74,9 +66,36 @@ export default function Home() {
                 console.log(list);
                 
         })
-       query();
+
+    }
+    async function queryComp(){
+        await  api.post(`/showCompleted/${user.id}`)
+      
+        .then (response=>{
+          
+                setListComp(response.data)
+                    
+        })
+    }
+    async function createTask() {
+     
+            api.post(`/task/${user.id}`,{
+                name:newTask,
+                completed:false,
+                user_id:user.id
+            }) 
+            
+        
+    }
     
+     useEffect(() => {
+        
+      queryComp();
+       query();
+       createTask();
     }, [])
+
+   
 
     return (
         <Conteiner>
@@ -121,9 +140,11 @@ export default function Home() {
             </ConteinerList2>
             <ButtomModal
                 onPress={() => setModalVisible(1)}
+           
             >
                 <TextModal>Add Task</TextModal>
             </ButtomModal>
+         
             <BottomSheet
 
                 ref={bottomSheetRef}
@@ -136,10 +157,19 @@ export default function Home() {
                     backgroundColor: '#363636',
                 }}
             >
+                 
+    
+              
+               
                 <ConteinerModal >
 
                     <TextTask>Add Task</TextTask>
-                    <InputTask />
+                    <InputTask
+                    value={newTask}
+                    onChangeText={setNewTask}
+                    
+                    />
+                     
                     <InputDescription />
                     <ConteinerIcon>
                         <ConteinerIconleft >
@@ -154,16 +184,19 @@ export default function Home() {
                             </ButtomIconLeft>
                         </ConteinerIconleft>
                         <ButtomIcon
+                           onPressIn={()=> createTask()}
                             onPress={() => setModalVisible(0)}
+                           
                         >
                             <Ionicons name="ios-send-outline" size={24} color="#8687E7" />
                         </ButtomIcon>
                     </ConteinerIcon>
 
                 </ConteinerModal>
-
-            </BottomSheet>
-
+       
+           
+              
+         </BottomSheet>
         </Conteiner>
     )
 }

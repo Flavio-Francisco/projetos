@@ -70,8 +70,11 @@ public function showCompleted($id = null) {
     $modelUser = new TodoListModelUser();
 
     $data = $this->request->getJSON();
+
+
     
    if ($modelUser->find($id)) {
+
 
         $this->model->save($data);
 
