@@ -61,13 +61,12 @@ public function showCompleted($id = null) {
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
 }
- public function showAtera($id=null,$user_id =null) {
-    $modelUser = new TodoListModelUser();
+ public function showAtera($name=null) {
 
     $data = $this->request->getJSON();
+$this->model->where('name', $name)->set(['completed' => $data->completed])->update();
 
-    if($modelUser->find($user_id)){
-        $this->model->update($id,$data);
+
         $response = [
             'status'   => 200,
             'error'    => null,
@@ -75,8 +74,8 @@ public function showCompleted($id = null) {
                 'success' => 'Dados alterados com sucesso'
             ]
         ];
-        return $this->respond($response);
-    }
+        return $this->response->setJSON($response);
+    
    
 }
 

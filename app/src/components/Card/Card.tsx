@@ -1,4 +1,4 @@
-import  React  from 'react';
+import  React, { useContext, useEffect }  from 'react';
 import { RadioButton } from 'react-native-paper';
 import { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
@@ -12,8 +12,11 @@ import {  Conteiner,
      TextIcon, 
      ViewButtomIcon} from "./style";
 import { useNavigation } from '@react-navigation/native';
+import { api } from '../../api/api';
+import { AuthContext } from '../../context/Auth';
     
 interface PropsList{
+    id:number;
     task:string;
     data:string;
     numbericom:number;
@@ -24,13 +27,33 @@ interface PropsList{
 export default function Card(props:PropsList){
     const navigation = useNavigation()
     const [isChecked, setChecked] = useState(false);
-  
+    const { user } = useContext(AuthContext)
+
+
    function handleSubimit() {
     navigation.navigate('Options',{
         isChecked,
     })
-       props.compreted = false
-   }  
+       
+   } 
+   async function updateTask() {
+    if (isChecked ===true) {
+        const result=  api.patch(`/showAtera/${props.task}`,{
+        
+            name: props.task,
+            completed: isChecked,
+            
+        })
+        console.log(props.task)
+    
+    }
+   }
+   
+   
+useEffect(()=>{
+    updateTask()
+})
+
     return(
         <Conteiner>
            

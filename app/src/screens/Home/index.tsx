@@ -128,7 +128,7 @@ export default function Home() {
                 <FlatList
                     data={Task}
                     keyExtractor={item=>item.name }
-                    renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} numbericom={1}compreted={false} />}
+                    renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} numbericom={1} compreted={false} id={item.item.id} />}
                 />
             }
             </ConteinerList>
