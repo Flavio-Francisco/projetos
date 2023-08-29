@@ -61,17 +61,22 @@ public function showCompleted($id = null) {
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
 }
- public function showAtera($id=null) {
+ public function showAtera($id=null,$user_id =null) {
+    $modelUser = new TodoListModelUser();
+
     $data = $this->request->getJSON();
-     $task = $this->model->findAll();
-   
-     //  var_dump($task);
-    
-     var_dump($reult);
-    $update = $task->update($id,$task);
-    //   return $this->respondUpdated($update);
 
-
+    if($modelUser->find($user_id)){
+        $this->model->update($id,$data);
+        $response = [
+            'status'   => 200,
+            'error'    => null,
+            'messages' => [
+                'success' => 'Dados alterados com sucesso'
+            ]
+        ];
+        return $this->respond($response);
+    }
    
 }
 
