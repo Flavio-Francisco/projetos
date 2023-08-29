@@ -151,11 +151,9 @@ export default function Home() {
             </ButtomModal>
        
             <BottomSheetComponent 
-          
             isOpen={modalVisible} 
             toggle={()=>setModalVisible(false)  }
-            
-            snapPoints={['1px', '90%']}
+            snapPoints={['90%']}
               
             >
                   
@@ -165,6 +163,7 @@ export default function Home() {
                     <InputTask
                     value={newTask}
                     onChangeText={setNewTask}
+                    placeholderTextColor={'#979797'}
                     
                     />
                      

@@ -31,9 +31,7 @@ export default function Card(props:PropsList){
 
 
    function handleSubimit() {
-    navigation.navigate('Options',{
-        isChecked,
-    })
+  
        
    } 
    async function updateTask() {

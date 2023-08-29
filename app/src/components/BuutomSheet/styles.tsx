@@ -5,9 +5,9 @@ export const Icon = styled(Feather)`
   position: absolute;
   right: 20px;
   top: 20px;
-  font-size: ${({theme}) => theme.sizes.lg};
+  font-size: 13px;
   z-index: 99;
-  color: ${({theme}) => theme.colors.dark};
+  color: 'red';
 `;
 
 export const Button = styled.TouchableOpacity`
