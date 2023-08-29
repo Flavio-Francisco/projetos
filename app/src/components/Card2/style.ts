@@ -21,12 +21,12 @@ export const  ConteinerView =  styled.View`
   
   flex-direction:column;
   justify-content:space-around;
-  height:90%;
+  height:100%;
   width:80%;
-  margin:10px;
   margin-left:15px;
   text-align: center;
   border-radius:7px;
+  padding:3px;
 `;
 export const  ConteinerTask =  styled.View`
   height:25px;

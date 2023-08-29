@@ -11,10 +11,10 @@ export const  Conteiner =  styled.View`
 `;
 
 export const  ConteinerList =  styled.View`
-  height:250px;
+  height:200px;
   justify-content:center;
   text-align: center;
-  margin-bottom:20px;
+  margin-bottom:10px;
 
 
 `;
@@ -69,15 +69,15 @@ export const SearchButtomList2 = styled.TouchableOpacity`
 `; 
 export const ButtomModal = styled.TouchableOpacity`
 width:21%;
-height:52px; 
+height:45px; 
 margin-left:73%;
 margin-bottom:25px;
+margin-top:30px;
 background-color:#979797;
 border-radius:5px;
 align-items:center;
 justify-content:center;
 `;
-
 export const TextModal = styled.Text`
  
  font-size:16px;

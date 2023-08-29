@@ -64,7 +64,7 @@ public function showCompleted($id = null) {
  public function showAtera($name=null) {
 
     $data = $this->request->getJSON();
-$this->model->where('name', $name)->set(['completed' => $data->completed])->update();
+$this->model->where('name', $name )->set(['completed' => $data->completed])->update();
 
 
         $response = [

@@ -18,27 +18,25 @@ import {
 import { Feather, Ionicons, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useContext, useRef, useState, useEffect } from "react";
 import BottomSheet from '@gorhom/bottom-sheet';
-import { Formik } from 'formik';
-import * as Yup from "yup";
+
+
 
 import Card2 from "../../components/Card2/Card2";
 import Card from "../../components/Card/Card";
-import { AuthContextTask, TaskProps } from "../../context/Task";
-import { AuthContext, AuthUserData } from "../../context/Auth";
+import { TaskProps } from "../../context/Task";
+import { AuthContext } from "../../context/Auth";
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import { api } from "../../api/api";
-import { TextErro } from "../login/style";
-import SpinnerTask from './../../components/Spinner/index';
+import { BottomSheetComponent } from "../../components/BuutomSheet";
+import { BlurView } from '@react-native-community/blur';
 
-interface MyFormValues {
-    task: string;
-    
-  }
+
+
 
 
 export default function Home() {
-    const [modalVisible, setModalVisible] = useState(0);
+    const [modalVisible, setModalVisible] = useState(false);
     const [list, setList] = useState<TaskProps[]>([]);
     const [listComp, setListComp] = useState<TaskProps[]>([]);
     const [newTask,setNewTask]= useState('')
@@ -147,29 +145,20 @@ export default function Home() {
               }
             </ConteinerList2>
             <ButtomModal
-                onPress={() => setModalVisible(1)}
-           
+                onPress={() => setModalVisible(!modalVisible)}
             >
                 <TextModal>Add Task</TextModal>
             </ButtomModal>
-         
-            <BottomSheet
-
-                ref={bottomSheetRef}
-                index={modalVisible}
-                snapPoints={snapPoints}
-                
-                handleIndicatorStyle={{
-                    backgroundColor: '#363636',
-                }}
-                backgroundStyle={{
-                    backgroundColor: '#363636',
-                }}
-            >
-                 
-    
+       
+            <BottomSheetComponent 
+          
+            isOpen={modalVisible} 
+            toggle={()=>setModalVisible(false)  }
+            
+            snapPoints={['1px', '90%']}
               
-               
+            >
+                  
                 <ConteinerModal >
 
                     <TextTask>Add Task</TextTask>
@@ -194,7 +183,7 @@ export default function Home() {
                         </ConteinerIconleft>
                         <ButtomIcon
                            onPressIn={()=> createTask()}
-                            onPress={() => setModalVisible(0)}
+                            onPress={() => setModalVisible(!modalVisible)}
                            
                         >
                             <Ionicons name="ios-send-outline" size={24} color="#8687E7" />
@@ -202,10 +191,9 @@ export default function Home() {
                     </ConteinerIcon>
 
                 </ConteinerModal>
-       
-           
-              
-         </BottomSheet>
+             
+         </BottomSheetComponent>
+         
         </Conteiner>
     )
 }

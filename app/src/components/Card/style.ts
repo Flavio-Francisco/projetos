@@ -21,9 +21,8 @@ export const  ConteinerView =  styled.View`
   
   flex-direction:column;
   justify-content:space-around;
-  height:90%;
+  height:70%;
   width:80%;
-  margin:10px;
   margin-left:15px;
   text-align: center;
   border-radius:7px;
