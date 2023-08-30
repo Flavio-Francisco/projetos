@@ -29,7 +29,7 @@ import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import { api } from "../../api/api";
 import { BottomSheetComponent } from "../../components/BuutomSheet";
-import { BlurView } from '@react-native-community/blur';
+
 
 
 
@@ -40,9 +40,8 @@ export default function Home() {
     const [list, setList] = useState<TaskProps[]>([]);
     const [listComp, setListComp] = useState<TaskProps[]>([]);
     const [newTask,setNewTask]= useState('')
-    const [loading, setLoading] = useState<boolean>(true);
-    const bottomSheetRef = useRef<BottomSheet>(null);
-    const snapPoints = ['1px', '90%'];
+    const [loading, setLoading] = useState(true);
+    const [refreshing, setRefreshing]= useState(false)
  
     
     const { user } = useContext(AuthContext)
@@ -56,6 +55,14 @@ export default function Home() {
         ...value,
         id: parseInt(key)
       }));
+
+
+      const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        setTimeout(() => {
+          setRefreshing(false);
+        }, 2000);
+      }, []);
     async function query(){
         api.post(`/show/${user.id}`)
       
@@ -83,16 +90,17 @@ export default function Home() {
                 completed:false,
                 user_id:user.id
             }) 
-
+                setNewTask('')
     }
      useEffect(() => {
         setTimeout(() => {  
+            onRefresh 
             setLoading(false);
           }, 2000);
         
       queryComp();
        query();
-      
+       
     }, [])
 
    
@@ -122,8 +130,14 @@ export default function Home() {
             </SearchButtomList>
             <ConteinerList>{loading?( <ActivityIndicator size={30} color={'#ffffff'}/>):
                 
-               
                 <FlatList
+                    refreshing={refreshing}
+                    
+                    onRefresh={()=>{
+                        onRefresh 
+                        
+                    
+                    }}
                     data={Task}
                     keyExtractor={item=>item.name }
                     renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} numbericom={1} compreted={false} id={item.item.id} />}
