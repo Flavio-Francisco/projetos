@@ -51,7 +51,7 @@ export const BottomSheetComponent = ({
         snapPoints={isOpenKeyboard ? ['85%'] : snapPoints}
         {...rest}>
         <Button onPress={toggle}>
-          <Icon name="x" />
+          <Icon name="x"  />
         </Button>
         {children}
       </BottomSheet>

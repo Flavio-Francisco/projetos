@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 
 
 export const  Conteiner =  styled.View`
-  flex:1;
+  height:100%;
   justify-content:center;
   background-color:#000;
 
@@ -15,6 +15,22 @@ export const  ConteinerList =  styled.View`
   justify-content:center;
   text-align: center;
   margin-bottom:10px;
+
+
+`;
+export const  ConteinerListNull =  styled.View`
+  height:200px;
+  justify-content:center;
+  text-align: center;
+  margin-bottom:10px;
+
+
+`;
+export const  ConteinerListNull2 =  styled.View`
+  height:25%;
+  justify-content:center;
+  text-align: center;
+  margin-bottom:-25px;
 
 
 `;
@@ -93,6 +109,7 @@ justify-content:space-between;
 width:90%;
 margin-left:10px;
 margin-top:55px;
+position:static;
 
 `;
 export const TitleHome = styled.Text`
@@ -164,6 +181,7 @@ export const TextTask = styled.Text`
 export const InputTask = styled.TextInput.attrs({
     placeholder:'new task',
     placeholderTextColor:'#979797',
+  
 })`
     width:90%;
     height:43px;
@@ -172,6 +190,7 @@ export const InputTask = styled.TextInput.attrs({
     padding: 10px;
     border: 1px solid #979797;
     border-radius:5px;
+    color: #979797;
  `;
  export const InputDescription = styled.TextInput.attrs({
     placeholder:'Description',

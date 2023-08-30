@@ -25,9 +25,6 @@ interface UserProps {
 
 }
 
-
-
-
 const validationSchema = Yup.object().shape({
   user: Yup.string()
     .label('user')
@@ -45,7 +42,6 @@ export default function Login() {
   
   const FormValues: MyFormValues = { user: '', password: '' };
   
-
   return (
     <ConteinerLogin>
 

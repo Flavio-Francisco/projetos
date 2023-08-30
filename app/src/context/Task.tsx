@@ -17,12 +17,12 @@ export interface TaskProps{
 export interface AuthContextDataProps {
     task:TaskProps;
     taskComplet:TaskProps;
-    taskQuery:(id:number)=>Promise<void>  ;
+    taskQuery:()=>Promise<void>  ;
     taskQueryUnique:( id:number)=>void;
     taskDeleteUnique:( id:number, user_id:number)=>void;
     taskDrop:( id:number)=>void;
-
-
+    queryComp:()=>Promise<void> 
+    createTask:(name:string)=>Promise<void> 
 
   }
 
@@ -38,7 +38,7 @@ export interface AuthContextDataProps {
   export function  AuthContextProviderTask({ children }: AuthContextProviderProps){
     const [task, setTask] = useState<TaskProps>({} as TaskProps);
     const [taskComplet, setTaskComplet] = useState<TaskProps>({} as TaskProps);
-     const{user} = useContext(AuthContext); 
+    const{user} = useContext(AuthContext); 
  
 
     async function taskQuery(){
@@ -48,7 +48,15 @@ export interface AuthContextDataProps {
          setTask(response.data)
         })
      }
-
+     async function createTask(name:string) {
+     
+      api.post(`/task/${user.id}`,{
+          name:name,
+          completed:false,
+          user_id:user.id
+      }) 
+         
+}
     
       async function taskQueryUnique(id:number){
         await api.post(`/show/${id}`)
@@ -74,11 +82,16 @@ export interface AuthContextDataProps {
         })
         
      }
-
-      if(task.completed==true){
-        setTaskComplet(task)
-      
-     }
+     async function queryComp(){
+      await  api.post(`/showCompleted/${user.id}`)
+    
+      .then (response=>{
+        
+              setTaskComplet(response.data)
+                  
+      })
+  }
+     
      
     return(
         <AuthContextTask.Provider 
@@ -89,7 +102,8 @@ export interface AuthContextDataProps {
               taskQueryUnique,
               taskDeleteUnique,
               taskDrop ,
-                         
+              queryComp,
+              createTask          
         }}
         >
 

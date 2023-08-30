@@ -1,4 +1,4 @@
-import { TouchableOpacity,ActivityIndicator } from "react-native";
+import { TouchableOpacity,ActivityIndicator, View } from "react-native";
 import {
     AvatarUserHome,
     TextModal,
@@ -13,7 +13,7 @@ import {
     SearchButtomList,
     SearchButtomList2,
     TextSearch,
-    TitleHome, InputTask, TextTask, InputDescription, ButtomIcon, ConteinerIcon, ConteinerIconleft, ButtomIconLeft, ConteinerModal
+    TitleHome, InputTask, TextTask, InputDescription, ButtomIcon, ConteinerIcon, ConteinerIconleft, ButtomIconLeft, ConteinerModal, ConteinerListNull, ConteinerListNull2
 } from "./style";
 import { Feather, Ionicons, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useContext, useRef, useState, useEffect } from "react";
@@ -23,7 +23,7 @@ import BottomSheet from '@gorhom/bottom-sheet';
 
 import Card2 from "../../components/Card2/Card2";
 import Card from "../../components/Card/Card";
-import { TaskProps } from "../../context/Task";
+import { AuthContextTask, TaskProps } from "../../context/Task";
 import { AuthContext } from "../../context/Auth";
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
@@ -37,70 +37,37 @@ import { BottomSheetComponent } from "../../components/BuutomSheet";
 
 export default function Home() {
     const [modalVisible, setModalVisible] = useState(false);
-    const [list, setList] = useState<TaskProps[]>([]);
-    const [listComp, setListComp] = useState<TaskProps[]>([]);
     const [newTask,setNewTask]= useState('')
     const [loading, setLoading] = useState(true);
-    const [refreshing, setRefreshing]= useState(false)
- 
+    const [refreshing, setRefreshing]= useState(true)
+    const [listVisible, setListVisible]= useState(true)
+    const [listVisible2, setListVisible2]= useState(true)
     
     const { user } = useContext(AuthContext)
+    const { task, taskComplet,queryComp,taskQuery,createTask} = useContext(AuthContextTask)
 
-    const Task =  Object.entries(list).map(([key, value]) => ({
+    const Task =  Object.entries(task).map(([key, value]) => ({
         ...value,
         id: parseInt(key)
       }));
 
-      const TaskComp =  Object.entries(listComp).map(([key, value]) => ({
+      const TaskComp =  Object.entries(taskComplet).map(([key, value]) => ({
         ...value,
         id: parseInt(key)
       }));
 
 
-      const onRefresh = React.useCallback(() => {
-        setRefreshing(true);
-        setTimeout(() => {
-          setRefreshing(false);
-        }, 2000);
-      }, []);
-    async function query(){
-        api.post(`/show/${user.id}`)
-      
-        .then (response=>{
-             
-                setList(response.data)
-                console.log(list);
-                
-        })
+   
 
-    }
-    async function queryComp(){
-        await  api.post(`/showCompleted/${user.id}`)
-      
-        .then (response=>{
-          
-                setListComp(response.data)
-                    
-        })
-    }
-    async function createTask() {
-     
-            api.post(`/task/${user.id}`,{
-                name:newTask,
-                completed:false,
-                user_id:user.id
-            }) 
-                setNewTask('')
-    }
+
      useEffect(() => {
         setTimeout(() => {  
-            onRefresh 
+             
             setLoading(false);
           }, 2000);
-        
-      queryComp();
-       query();
-       
+     
+      taskQuery();
+       queryComp();
     }, [])
 
    
@@ -121,43 +88,61 @@ export default function Home() {
             </HeaderHome>
 
             <ConteinerSearch>
-                <SearchButtom ><Feather name="search" size={30} color="#AFAFAF" /></SearchButtom>
+                <SearchButtom >    
+                  <Feather name="search" size={30} color="#AFAFAF" />     
+                </SearchButtom>
                 <Search />
             </ConteinerSearch>
-            <SearchButtomList>
-                <TextSearch>Today </TextSearch>
-                <AntDesign name="down" size={12} color="#ffffff" />
+            <SearchButtomList
+            onPress={()=>setListVisible(!listVisible)}
+            >
+                {listVisible ==true?
+                <><TextSearch>Today </TextSearch><AntDesign name="down" size={12} color="#ffffff" /></>
+                  :
+                  <><TextSearch>Today </TextSearch><AntDesign name="up" size={12} color="#ffffff" /></>  
+            }
             </SearchButtomList>
-            <ConteinerList>{loading?( <ActivityIndicator size={30} color={'#ffffff'}/>):
-                
+            { listVisible == true? 
+            <ConteinerList>
+            { loading?( <ActivityIndicator size={30} color={'#ffffff'}/>):
+            
                 <FlatList
-                    refreshing={refreshing}
-                    
-                    onRefresh={()=>{
-                        onRefresh 
-                        
-                    
-                    }}
+                  
+                
                     data={Task}
                     keyExtractor={item=>item.name }
                     renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} numbericom={1} compreted={false} id={item.item.id} />}
                 />
+                
             }
-            </ConteinerList>
+            </ConteinerList>:<ConteinerListNull></ConteinerListNull>
+            }
+           
           
-            <SearchButtomList2>
-                <TextSearch>Completd</TextSearch>
-                <AntDesign name="down" size={12} color="#ffffff" />
-            </SearchButtomList2>
+           <SearchButtomList
+            onPress={()=>setListVisible2(!listVisible2)}
+            >
+                {listVisible2 ==true?
+                <><TextSearch>Completed </TextSearch><AntDesign name="down" size={12} color="#ffffff" /></>
+                  :
+                  <><TextSearch>Completed </TextSearch><AntDesign name="up" size={12} color="#ffffff" /></>  
+            }
+            </SearchButtomList>
+            { listVisible2 == true? 
             <ConteinerList2>
-                {loading?( <ActivityIndicator size={30} color={'#ffffff'}/>):
+            { loading?( <ActivityIndicator size={30} color={'#ffffff'}/>):
+            
                 <FlatList
+                
+                  
                     data={TaskComp}
-                    keyExtractor={item => item.name}
-                    renderItem={(item) => <Card2 task={item.item.name} data={"Today At 16:45"} numbericom={1} />}
+                    keyExtractor={item=>item.name }
+                    renderItem={(item) => <Card2 task={item.item.name} data={"Today At 16:45"} numbericom={1}   />}
                 />
-              }
-            </ConteinerList2>
+                
+            }
+            </ConteinerList2>:<ConteinerListNull2></ConteinerListNull2>
+            }
             <ButtomModal
                 onPress={() => setModalVisible(!modalVisible)}
             >
@@ -181,7 +166,9 @@ export default function Home() {
                     
                     />
                      
-                    <InputDescription />
+                    <InputDescription
+                  
+                    />
                     <ConteinerIcon>
                         <ConteinerIconleft >
                             <ButtomIconLeft>
@@ -195,7 +182,11 @@ export default function Home() {
                             </ButtomIconLeft>
                         </ConteinerIconleft>
                         <ButtomIcon
-                           onPressIn={()=> createTask()}
+                           onPressIn={()=> {
+                           
+                            createTask(newTask)
+                            taskQuery()
+                        }}
                             onPress={() => setModalVisible(!modalVisible)}
                            
                         >

@@ -11,9 +11,10 @@ import {  Conteiner,
      TasksTextP,
      TextIcon, 
      ViewButtomIcon} from "./style";
-import { useNavigation } from '@react-navigation/native';
+
 import { api } from '../../api/api';
 import { AuthContext } from '../../context/Auth';
+import { AuthContextTask, TaskProps } from '../../context/Task';
     
 interface PropsList{
     id:number;
@@ -24,10 +25,12 @@ interface PropsList{
     
 }
 
+
 export default function Card(props:PropsList){
-    const navigation = useNavigation()
+   
     const [isChecked, setChecked] = useState(false);
     const { user } = useContext(AuthContext)
+    const { queryComp } = useContext(AuthContextTask)
 
 
    function handleSubimit() {
@@ -36,11 +39,13 @@ export default function Card(props:PropsList){
    } 
    async function updateTask() {
     if (isChecked ===true) {
-        const result=  api.patch(`/showAtera/${props.task}`,{
+         api.patch(`/showAtera/${props.task}`,{
         
             name: props.task,
             completed: isChecked,
             
+        }).then(()=>{
+            queryComp()        
         })
         console.log(props.task)
     
@@ -50,7 +55,8 @@ export default function Card(props:PropsList){
    
 useEffect(()=>{
     updateTask()
-})
+   
+},[])
 
     return(
         <Conteiner>
@@ -60,7 +66,10 @@ useEffect(()=>{
             status={ isChecked === true ? 'checked' : 'unchecked' }
             color='#fff'
             uncheckedColor='#fff'
-            onPress={() =>{ setChecked(!props.compreted)             
+            onPress={() =>{
+                updateTask()
+                setChecked(!props.compreted)   
+                 
             }}
          />
 
