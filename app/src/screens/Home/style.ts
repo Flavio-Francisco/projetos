@@ -35,10 +35,10 @@ export const  ConteinerListNull2 =  styled.View`
 
 `;
 export const  ConteinerList2 =  styled.View`
- 
+  position: absolute;
   justify-content:center;
   text-align: center;
-  margin-bottom:-25px;
+  margin-bottom:0;
   height:25%;
 `;
 export const  ConteinerSearch =  styled.View`
@@ -74,7 +74,7 @@ export const SearchButtomList = styled.TouchableOpacity`
 
 `; 
 export const SearchButtomList2 = styled.TouchableOpacity`
- width:21%;
+ width:26%;
  flex-direction:row;
  align-items:center;
  justify-content:center;

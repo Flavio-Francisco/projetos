@@ -5,10 +5,9 @@ import styled from "styled-components/native";
 
 
 export const  Conteiner =  styled.View`
-  flex:1;
+
   flex-direction:row;
   justify-content:center;
-  align-items:center;
   width:90%;
   margin-top:10px;
   margin-left:15px;
@@ -20,8 +19,6 @@ export const  Conteiner =  styled.View`
 export const  ConteinerView =  styled.View`
   
   flex-direction:column;
-  justify-content:space-around;
-  height:100%;
   width:80%;
   margin-left:15px;
   text-align: center;
@@ -42,34 +39,14 @@ export const  ConteinerData =  styled.View`
   gap:3px;
  
 `;
-export const  ViewButtomIcon=  styled.View`
-  width:45%;
-  height:30px;
-  display: flex;
-  align-items:center;
-  flex-direction:row;
-  justify-content:space-around;
-  gap:2px;
- 
- 
- 
-`;
 
 
- 
 export const  TasksTextG =  styled.Text` 
   font-size:16px;
   color:#ffffff;
  
 `;
-export const  TasksTextP =  styled.Text`
-  font-size:12px;
-  text-align: center;
-  border: 2px solid #8687E7;
-  border-radius:5px;
-  padding:5px;
-  color:#ffffff;
-`;
+
 export const  TasksDate =  styled.Text`
   font-size:12px;
   width:25px;

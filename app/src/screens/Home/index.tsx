@@ -1,4 +1,4 @@
-import { TouchableOpacity,ActivityIndicator, View } from "react-native";
+import { TouchableOpacity, ActivityIndicator, View } from "react-native";
 import {
     AvatarUserHome,
     TextModal,
@@ -16,19 +16,17 @@ import {
     TitleHome, InputTask, TextTask, InputDescription, ButtomIcon, ConteinerIcon, ConteinerIconleft, ButtomIconLeft, ConteinerModal, ConteinerListNull, ConteinerListNull2
 } from "./style";
 import { Feather, Ionicons, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useContext, useRef, useState, useEffect } from "react";
-import BottomSheet from '@gorhom/bottom-sheet';
+import { useContext, useState, useEffect } from "react";
 
 
 
 import Card2 from "../../components/Card2/Card2";
 import Card from "../../components/Card/Card";
 import { AuthContextTask, TaskProps } from "../../context/Task";
-import { AuthContext } from "../../context/Auth";
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
-import { api } from "../../api/api";
 import { BottomSheetComponent } from "../../components/BuutomSheet";
+import { api } from "../../api/api";
 
 
 
@@ -37,40 +35,41 @@ import { BottomSheetComponent } from "../../components/BuutomSheet";
 
 export default function Home() {
     const [modalVisible, setModalVisible] = useState(false);
-    const [newTask,setNewTask]= useState('')
-    const [loading, setLoading] = useState(true);
-    const [refreshing, setRefreshing]= useState(true)
-    const [listVisible, setListVisible]= useState(true)
-    const [listVisible2, setListVisible2]= useState(true)
-    
-    const { user } = useContext(AuthContext)
-    const { task, taskComplet,queryComp,taskQuery,createTask} = useContext(AuthContextTask)
-
-    const Task =  Object.entries(task).map(([key, value]) => ({
-        ...value,
-        id: parseInt(key)
-      }));
-
-      const TaskComp =  Object.entries(taskComplet).map(([key, value]) => ({
-        ...value,
-        id: parseInt(key)
-      }));
+    const [newTask, setNewTask] = useState('')
+    const [refreshing, setRefreshing] = useState(true)
+    const [listVisible, setListVisible] = useState(true)
+    const [listVisible2, setListVisible2] = useState(true)
 
 
-   
+    const { task, taskComplet, queryComp, taskQuery, createTask, loading, loading2 } = useContext(AuthContextTask);
+
+    console.log(task, taskComplet)
+
+    // const Task = Object.entries(task).map(([key, value]) => ({
+    //     ...value,
+    //     id: parseInt(key)
+    // }));
+
+    // const TaskComp = Object.entries(taskComplet).map(([key, value]) => ({
+    //     ...value,
+    //     id: parseInt(key)
+    // }));
 
 
-     useEffect(() => {
-        setTimeout(() => {  
-             
-            setLoading(false);
-          }, 2000);
-     
-      taskQuery();
-       queryComp();
-    }, [])
+    useEffect(() => {
+        queryComp()
+        taskQuery()
+    }, [queryComp, taskQuery])
 
-   
+
+    async function updateTask(name: string,) {
+        await api.patch(`/showAtera/${name}`, {
+            name: task,
+            completed: true,
+        }).then(() => {
+            taskQuery();
+        })
+    }
 
     return (
         <Conteiner>
@@ -88,86 +87,84 @@ export default function Home() {
             </HeaderHome>
 
             <ConteinerSearch>
-                <SearchButtom >    
-                  <Feather name="search" size={30} color="#AFAFAF" />     
+                <SearchButtom >
+                    <Feather name="search" size={30} color="#AFAFAF" />
                 </SearchButtom>
                 <Search />
             </ConteinerSearch>
             <SearchButtomList
-            onPress={()=>setListVisible(!listVisible)}
+                onPress={() => {
+                    setListVisible(!listVisible)
+                    taskQuery()
+                }}
             >
-                {listVisible ==true?
-                <><TextSearch>Today </TextSearch><AntDesign name="down" size={12} color="#ffffff" /></>
-                  :
-                  <><TextSearch>Today </TextSearch><AntDesign name="up" size={12} color="#ffffff" /></>  
-            }
+                {listVisible == true ?
+                    <><TextSearch>Today </TextSearch><AntDesign name="down" size={12} color="#ffffff" /></>
+                    :
+                    <><TextSearch>Today </TextSearch><AntDesign name="up" size={12} color="#ffffff" /></>
+                }
             </SearchButtomList>
-            { listVisible == true? 
-            <ConteinerList>
-            { loading?( <ActivityIndicator size={30} color={'#ffffff'}/>):
-            
-                <FlatList
-                  
-                
-                    data={Task}
-                    keyExtractor={item=>item.name }
-                    renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} numbericom={1} compreted={false} id={item.item.id} />}
-                />
-                
+            {listVisible == true ?
+                <ConteinerList>
+                    {loading ? (<ActivityIndicator size={30} color={'#ffffff'} />) :
+                        <FlatList
+                            data={task}
+                            keyExtractor={item => item.id}
+                            renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} onpress={updateTask} numbericom={1} compreted={false} id={0}  />}
+                        />
+
+                    }
+                </ConteinerList> : <ConteinerListNull></ConteinerListNull>
             }
-            </ConteinerList>:<ConteinerListNull></ConteinerListNull>
-            }
-           
-          
-           <SearchButtomList
-            onPress={()=>setListVisible2(!listVisible2)}
+
+
+            <SearchButtomList2
+                onPress={() => setListVisible2(!listVisible2)}
             >
-                {listVisible2 ==true?
-                <><TextSearch>Completed </TextSearch><AntDesign name="down" size={12} color="#ffffff" /></>
-                  :
-                  <><TextSearch>Completed </TextSearch><AntDesign name="up" size={12} color="#ffffff" /></>  
-            }
-            </SearchButtomList>
-            { listVisible2 == true? 
-            <ConteinerList2>
-            { loading?( <ActivityIndicator size={30} color={'#ffffff'}/>):
-            
-                <FlatList
-                
-                  
-                    data={TaskComp}
-                    keyExtractor={item=>item.name }
-                    renderItem={(item) => <Card2 task={item.item.name} data={"Today At 16:45"} numbericom={1}   />}
-                />
-                
-            }
-            </ConteinerList2>:<ConteinerListNull2></ConteinerListNull2>
+                {listVisible2 == true ?
+                    <><TextSearch>Completed </TextSearch><AntDesign name="down" size={12} color="#ffffff" /></>
+                    :
+                    <><TextSearch>Completed </TextSearch><AntDesign name="up" size={12} color="#ffffff" /></>
+                }
+            </SearchButtomList2>
+            {listVisible2 == true ?
+                <ConteinerList2>
+                    {loading2 ? (<ActivityIndicator size={30} color={'#ffffff'} />) :
+
+                        <FlatList
+                            data={taskComplet}
+                            keyExtractor={item => item.id}
+                            renderItem={(item) => <Card2 task={item.item.name}  />}
+                        />
+
+                    }
+                </ConteinerList2> : <ConteinerListNull2></ConteinerListNull2>
             }
             <ButtomModal
                 onPress={() => setModalVisible(!modalVisible)}
             >
                 <TextModal>Add Task</TextModal>
             </ButtomModal>
-       
-            <BottomSheetComponent 
-            isOpen={modalVisible} 
-            toggle={()=>setModalVisible(false)  }
-            snapPoints={['90%']}
-              
+
+            <BottomSheetComponent
+                isOpen={modalVisible}
+                toggle={() => setModalVisible(false)}
+                snapPoints={['90%'] }
+
             >
-                  
+
                 <ConteinerModal >
 
                     <TextTask>Add Task</TextTask>
                     <InputTask
-                    value={newTask}
-                    onChangeText={setNewTask}
-                    placeholderTextColor={'#979797'}
-                    
+                        value={newTask}
+                        onChangeText={setNewTask}
+                        placeholderTextColor={'#979797'}
+
                     />
-                     
+
                     <InputDescription
-                  
+
                     />
                     <ConteinerIcon>
                         <ConteinerIconleft >
@@ -182,22 +179,22 @@ export default function Home() {
                             </ButtomIconLeft>
                         </ConteinerIconleft>
                         <ButtomIcon
-                           onPressIn={()=> {
-                           
-                            createTask(newTask)
-                            taskQuery()
-                        }}
+                            onPressIn={() => {
+
+                                createTask(newTask)
+                                taskQuery()
+                            }}
                             onPress={() => setModalVisible(!modalVisible)}
-                           
+
                         >
                             <Ionicons name="ios-send-outline" size={24} color="#8687E7" />
                         </ButtomIcon>
                     </ConteinerIcon>
 
                 </ConteinerModal>
-             
-         </BottomSheetComponent>
-         
+
+            </BottomSheetComponent>
+
         </Conteiner>
     )
 }

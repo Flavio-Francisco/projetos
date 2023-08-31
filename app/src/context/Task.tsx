@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { ReactNode, createContext, useContext, useState } from "react";
 import { api } from "../api/api";
 import { AuthContext } from "./Auth";
@@ -15,14 +15,16 @@ export interface TaskProps{
 
 
 export interface AuthContextDataProps {
-    task:TaskProps;
-    taskComplet:TaskProps;
+    task:TaskProps[];
+    taskComplet:TaskProps[];
     taskQuery:()=>Promise<void>  ;
     taskQueryUnique:( id:number)=>void;
     taskDeleteUnique:( id:number, user_id:number)=>void;
     taskDrop:( id:number)=>void;
     queryComp:()=>Promise<void> 
     createTask:(name:string)=>Promise<void> 
+    loading:boolean;
+    loading2:boolean;
 
   }
 
@@ -36,21 +38,28 @@ export interface AuthContextDataProps {
 
 
   export function  AuthContextProviderTask({ children }: AuthContextProviderProps){
-    const [task, setTask] = useState<TaskProps>({} as TaskProps);
-    const [taskComplet, setTaskComplet] = useState<TaskProps>({} as TaskProps);
+    const [task, setTask] = useState<TaskProps[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [loading2, setLoading2] = useState(true);
+    const [taskComplet, setTaskComplet] = useState<TaskProps[]>([]);
     const{user} = useContext(AuthContext); 
  
 
-    async function taskQuery(){
+    const taskQuery = useCallback(async () => {
+
       await api.post(`/show/${user.id}`)
-      
         .then (response=>{
-         setTask(response.data)
+         setTask(response.data || [])
+         setLoading(!loading)
+        }).catch((err) => {
+          console.log(err)
         })
-     }
+     }, [user.id])
+
+
      async function createTask(name:string) {
      
-      api.post(`/task/${user.id}`,{
+    await  api.post(`/task/${user.id}`,{
           name:name,
           completed:false,
           user_id:user.id
@@ -82,15 +91,15 @@ export interface AuthContextDataProps {
         })
         
      }
-     async function queryComp(){
-      await  api.post(`/showCompleted/${user.id}`)
-    
-      .then (response=>{
-        
-              setTaskComplet(response.data)
-                  
-      })
-  }
+      const queryComp = useCallback(async () => {
+        await  api.post(`/showCompleted/${user.id}`)
+        .then (response=>{
+                setTaskComplet(response.data)
+                setLoading2(!loading2) 
+        }).catch((err) => {
+          console.log(err)
+        })
+    },[user.id])
      
      
     return(
@@ -103,7 +112,9 @@ export interface AuthContextDataProps {
               taskDeleteUnique,
               taskDrop ,
               queryComp,
-              createTask          
+              createTask,
+              loading,
+              loading2          
         }}
         >
 

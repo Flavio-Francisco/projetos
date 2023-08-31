@@ -28,15 +28,12 @@ class Task extends ResourceController
   
 
    public function show($id = null) {
-    $data = $this->model->getWhere(['user_id' => $id])->getResult();
+    $data = $this->model->getWhere(['user_id' => $id, 'completed' => 'f'])->getResult();
       //  var_dump($data);
     if (!empty($data)) {
-        $incompleteItems = array_filter($data, function ($item) {
-            return $item->completed === 'f';
-        });
 
-        if (!empty($incompleteItems)) {
-            return $this->respond($incompleteItems);
+        if (!empty($data)) {
+            return $this->respond($data);
         } else {
             return $this->failNotFound('Nenhum dado incompleto encontrado com id ' . $id);
         }
@@ -45,15 +42,12 @@ class Task extends ResourceController
     }
 }
 public function showCompleted($id = null) {
-    $data = $this->model->getWhere(['user_id' => $id])->getResult();
+    $data = $this->model->getWhere(['user_id' => $id,  'completed' => 't'])->getResult();
       //  var_dump($data);
     if (!empty($data)) {
-        $incompleteItems = array_filter($data, function ($item) {
-            return $item->completed === 't';
-        });
-
-        if (!empty($incompleteItems)) {
-            return $this->respond($incompleteItems);
+       
+        if (!empty($data)) {
+            return $this->respond($data);
         } else {
             return $this->failNotFound('Nenhum dado incompleto encontrado com id ' . $id);
         }
