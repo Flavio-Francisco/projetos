@@ -11,7 +11,8 @@ import {
     TasksTextG,
     TasksTextP,
     TextIcon,
-    ViewButtomIcon
+    ViewButtomIcon,
+    RadioButtonView
 } from "./style";
 
 import { api } from '../../api/api';
@@ -37,6 +38,7 @@ export default function Card(props: PropsList) {
 
     return (
         <Conteiner>
+        <RadioButtonView>
             <RadioButton
                 value={"first"}
                 status={isChecked === true ? 'checked' : 'unchecked'}
@@ -46,8 +48,9 @@ export default function Card(props: PropsList) {
                     props.onpress(props.task)
                     setChecked(!isChecked)
                 }}
+              
             />
-
+         </RadioButtonView>
             <ConteinerView>
                 <ConteinerTask >
                     <TasksTextG>{props.task}</TasksTextG>

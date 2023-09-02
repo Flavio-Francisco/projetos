@@ -8,10 +8,11 @@ export const  Conteiner =  styled.View`
 
   flex-direction:row;
   justify-content:center;
+  align-items:center;
+  height:60px;
   width:90%;
   margin-top:10px;
   margin-left:15px;
-  text-align: center;
   background-color:#363636;
   border-radius:5px;
 `;
@@ -28,6 +29,15 @@ export const  ConteinerView =  styled.View`
 export const  ConteinerTask =  styled.View`
   height:25px;
   width:80%;
+
+`;
+export const  RadioButtonView =  styled.View`
+  
+
+  height:25px;
+  width:35px;
+  text-align: center;
+  justify-content:center;
 
 `;
 export const  ConteinerData =  styled.View`

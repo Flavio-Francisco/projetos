@@ -8,6 +8,7 @@ import {  Conteiner,
      ConteinerView,
      TasksTextG,
      TextIcon, 
+     RadioButtonView 
  } from "./style";
 import { api } from '../../api/api';
     
@@ -23,6 +24,19 @@ export default function Card2(props:PropsList){
      
     return(
         <Conteiner>
+                   <RadioButtonView>
+            <RadioButton
+                value={"first"}
+                status={isChecked === true ? 'checked' : 'unchecked'}
+                color='#fff'
+                uncheckedColor='#fff'
+                onPress={() => {
+                  
+                    setChecked(!isChecked)
+                }}
+              
+            />
+         </RadioButtonView>
            
         <ConteinerView>
             <ConteinerTask >

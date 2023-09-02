@@ -5,30 +5,43 @@ import styled from "styled-components/native";
 
 
 export const  Conteiner =  styled.View`
+
   flex-direction:row;
   justify-content:center;
   align-items:center;
-  width:90%;
-  margin-top:10px;
+  height:80px;
+  width:350px;
   margin-left:15px;
   text-align: center;
   background-color:#363636;
   border-radius:5px;
+ 
+  margin-bottom:15px;
+ 
 `;
 
 export const  ConteinerView =  styled.View`
   
   flex-direction:column;
   justify-content:space-around;
-  height:70%;
-  width:80%;
+  height:60px;
+  width:260px;
   margin-left:15px;
   text-align: center;
   border-radius:7px;
 `;
+export const  RadioButtonView =  styled.View`
+  
+
+  height:25px;
+  width:35px;
+  text-align: center;
+  justify-content:center;
+
+`;
 export const  ConteinerTask =  styled.View`
   height:25px;
-  width:80%;
+  width:260px;
 
 `;
 export const  ConteinerData =  styled.View`
@@ -37,17 +50,16 @@ export const  ConteinerData =  styled.View`
   justify-content:space-between;
   align-items:center;
   border-radius:7px;
-  gap:3px;
+  
  
 `;
 export const  ViewButtomIcon=  styled.View`
-  width:45%;
+  width:100px;
   height:30px;
-  display: flex;
   align-items:center;
   flex-direction:row;
   justify-content:space-around;
-  gap:2px;
+  gap:10px;
  
  
  
@@ -81,7 +93,7 @@ export const  TextIcon =  styled.Text`
  
 `;
 export const  TasksButtom =  styled.TouchableOpacity`
-  width:55%;
+  width:55px;
   height:30px;
   align-items:center;
   justify-content:center;
@@ -92,4 +104,3 @@ export const  TasksButtom =  styled.TouchableOpacity`
 
 `;
 
- 

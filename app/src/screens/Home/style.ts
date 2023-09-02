@@ -35,10 +35,10 @@ export const  ConteinerListNull2 =  styled.View`
 
 `;
 export const  ConteinerList2 =  styled.View`
-  position: absolute;
+ 
   justify-content:center;
   text-align: center;
-  margin-bottom:0;
+  margin-bottom:-25px;
   height:25%;
 `;
 export const  ConteinerSearch =  styled.View`

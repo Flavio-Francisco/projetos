@@ -68,6 +68,7 @@ export default function Home() {
             completed: true,
         }).then(() => {
             taskQuery();
+            queryComp()
         })
     }
 
@@ -183,6 +184,7 @@ export default function Home() {
 
                                 createTask(newTask)
                                 taskQuery()
+                              
                             }}
                             onPress={() => setModalVisible(!modalVisible)}
 
