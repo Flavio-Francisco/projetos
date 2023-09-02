@@ -13,7 +13,18 @@ import {
     SearchButtomList,
     SearchButtomList2,
     TextSearch,
-    TitleHome, InputTask, TextTask, InputDescription, ButtomIcon, ConteinerIcon, ConteinerIconleft, ButtomIconLeft, ConteinerModal, ConteinerListNull, ConteinerListNull2
+    TitleHome,
+    InputTask,
+    TextTask,
+    InputDescription,
+    ButtomIcon,
+    ConteinerIcon,
+    ConteinerIconleft,
+    ButtomIconLeft,
+    ConteinerModal,
+    ConteinerListNull,
+    ConteinerListNull2,
+    ConteinerSearchInput
 } from "./style";
 import { Feather, Ionicons, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useContext, useState, useEffect } from "react";
@@ -36,31 +47,45 @@ import { api } from "../../api/api";
 export default function Home() {
     const [modalVisible, setModalVisible] = useState(false);
     const [newTask, setNewTask] = useState('')
-    const [refreshing, setRefreshing] = useState(true)
+    const [search, setSearch] = useState('')
+    const [filterData, setFilterData] = useState<TaskProps[]>([]);
     const [listVisible, setListVisible] = useState(true)
     const [listVisible2, setListVisible2] = useState(true)
 
 
-    const { task, taskComplet, queryComp, taskQuery, createTask, loading, loading2 } = useContext(AuthContextTask);
+    const { task, taskComplet, queryComp, taskQuery, createTask, loading, loading2   } = useContext(AuthContextTask);
 
     console.log(task, taskComplet)
 
-    // const Task = Object.entries(task).map(([key, value]) => ({
-    //     ...value,
-    //     id: parseInt(key)
-    // }));
-
-    // const TaskComp = Object.entries(taskComplet).map(([key, value]) => ({
-    //     ...value,
-    //     id: parseInt(key)
-    // }));
+ 
 
 
     useEffect(() => {
         queryComp()
         taskQuery()
+        
+        console.log('====================================');
+        console.log(filterData);
+        console.log('====================================');
     }, [queryComp, taskQuery])
 
+    function searcFilter(text:string) {
+     
+        if (text) {
+            //filtro de pesquisa
+            const newData = task.filter((item)=>{
+                if (item.name) {
+                    const itemData = item.name.toUpperCase();
+                    const textData = text.toUpperCase();
+                    return itemData.indexOf(textData)>-1;
+                }
+            });
+            setFilterData(newData)
+        }else{
+            setFilterData(task)
+        }
+        setSearch(text)
+    }
 
     async function updateTask(name: string,) {
         await api.patch(`/showAtera/${name}`, {
@@ -88,11 +113,17 @@ export default function Home() {
             </HeaderHome>
 
             <ConteinerSearch>
-                <SearchButtom >
+                <SearchButtom 
+                onPress={()=>searcFilter(search)}
+                >
                     <Feather name="search" size={30} color="#AFAFAF" />
                 </SearchButtom>
-                <Search />
+                <Search
+                onChangeText={(text)=>setSearch(text)}
+                value={search}
+                />
             </ConteinerSearch>
+       
             <SearchButtomList
                 onPress={() => {
                     setListVisible(!listVisible)
@@ -110,7 +141,7 @@ export default function Home() {
                     {loading ? (<ActivityIndicator size={30} color={'#ffffff'} />) :
                         <FlatList
                             data={task}
-                            keyExtractor={item => item.id}
+                            keyExtractor={item => item.name}
                             renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} onpress={updateTask} numbericom={1} compreted={false} id={0}  />}
                         />
 

@@ -25,7 +25,7 @@ export interface AuthContextDataProps {
     createTask:(name:string)=>Promise<void> 
     loading:boolean;
     loading2:boolean;
-
+    
   }
 
   interface AuthContextProviderProps {
@@ -56,6 +56,7 @@ export interface AuthContextDataProps {
         })
      }, [user.id])
 
+     
 
      async function createTask(name:string) {
      
@@ -114,7 +115,8 @@ export interface AuthContextDataProps {
               queryComp,
               createTask,
               loading,
-              loading2          
+              loading2,
+                
         }}
         >
 

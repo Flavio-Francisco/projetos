@@ -41,6 +41,13 @@ export const  ConteinerList2 =  styled.View`
   margin-bottom:-25px;
   height:25%;
 `;
+export const  ConteinerSearchInput =  styled.View`
+ 
+  justify-content:center;
+  text-align: center;
+  margin-bottom:-25px;
+  height:25%;
+`;
 export const  ConteinerSearch =  styled.View`
 
   justify-content:center;
@@ -109,7 +116,6 @@ justify-content:space-between;
 width:90%;
 margin-left:10px;
 margin-top:55px;
-position:static;
 
 `;
 export const TitleHome = styled.Text`
