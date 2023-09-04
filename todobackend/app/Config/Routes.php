@@ -12,7 +12,7 @@ $routes = Services::routes();
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('User');
+$routes->setDefaultController('Login');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -36,7 +36,7 @@ $routes->post('/auth', 'User::auth');
 $routes->post('/query/(:segment)', 'User::show/$1');
 $routes->put('/update/(:segment)', 'User::update/$1');
 $routes->put('/delete/(:segment)', 'User::delete/$1');
-$routes->post('/login', 'Login::login');
+$routes->post('/login', 'Login::auth');
 
         #Routes 
  $routes->get('/taskget', 'Task::get');
