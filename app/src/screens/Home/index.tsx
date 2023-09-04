@@ -24,7 +24,9 @@ import {
     ConteinerModal,
     ConteinerListNull,
     ConteinerListNull2,
-    ConteinerSearchInput
+    ConteinerSearchInput,
+    ButtomSeach,
+    TextButtom
 } from "./style";
 import { Feather, Ionicons, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useContext, useState, useEffect } from "react";
@@ -51,7 +53,7 @@ export default function Home() {
     const [filterData, setFilterData] = useState<TaskProps[]>([]);
     const [listVisible, setListVisible] = useState(true)
     const [listVisible2, setListVisible2] = useState(true)
-
+    const [Visible, setVisible] = useState(false);
 
     const { task, taskComplet, queryComp, taskQuery, createTask, loading, loading2   } = useContext(AuthContextTask);
 
@@ -119,8 +121,11 @@ export default function Home() {
                     <Feather name="search" size={30} color="#AFAFAF" />
                 </SearchButtom>
                 <Search
-                onChangeText={(text)=>setSearch(text)}
+                onChangeText={(text)=>{
+                    setVisible(!Visible)
+                    searcFilter(text)}}
                 value={search}
+               
                 />
             </ConteinerSearch>
        
@@ -136,6 +141,8 @@ export default function Home() {
                     <><TextSearch>Today </TextSearch><AntDesign name="up" size={12} color="#ffffff" /></>
                 }
             </SearchButtomList>
+            {Visible==true?
+            <>
             {listVisible == true ?
                 <ConteinerList>
                     {loading ? (<ActivityIndicator size={30} color={'#ffffff'} />) :
@@ -149,7 +156,28 @@ export default function Home() {
                 </ConteinerList> : <ConteinerListNull></ConteinerListNull>
             }
 
+            </>:
+            <>
+                    <ButtomSeach 
+                        onPress={()=>setVisible(!Visible)}
+                    >
+                        <TextButtom>x</TextButtom>
+                    </ButtomSeach>
 
+                 <ConteinerList>
+                    {loading ? (<ActivityIndicator size={30} color={'#ffffff'} />) :
+                        <FlatList
+                            data={filterData}
+                            keyExtractor={item => item.id}
+                            renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} onpress={updateTask} numbericom={1} compreted={false} id={0}  />}
+                        />
+
+                    }
+                </ConteinerList>
+            
+            </>
+            }
+            
             <SearchButtomList2
                 onPress={() => setListVisible2(!listVisible2)}
             >

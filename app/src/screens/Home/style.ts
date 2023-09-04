@@ -218,3 +218,20 @@ export const InputTask = styled.TextInput.attrs({
   
 
 `;
+
+export const ButtomSeach = styled.TouchableOpacity`
+ width:32px;
+ height:25px;
+ background-color: #000;
+ margin-left:88%;
+ margin-bottom:2%;
+ align-items:center;
+ border:1px #979797;
+ border-radius:10px;
+`;
+export const TextButtom = styled.Text`
+ width:100%;
+ height:15px;
+ color: #979797;
+ text-align:center
+`;
