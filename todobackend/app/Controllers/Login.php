@@ -27,7 +27,7 @@ public function authJwt(){
     $data = $this->model->where('name',$query->name )->first();
     $key = $_ENV['KEY'];
 
-    if($data['name'] ==$query->name && $data['password'] == $query->password){
+    if($data['name'] == $query->name && $data['password'] == $query->password){
 
     
         $payload =[
@@ -44,7 +44,7 @@ public function authJwt(){
                 //criando uma nova chave com o token
         $decoded = JWT::decode($jwt, new Key($key, 'HS256'));
         
-        return $this->respond($jwt);
+        return $this->respond([$data,$jwt]);
 
     }
 

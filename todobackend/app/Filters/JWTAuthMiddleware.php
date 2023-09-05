@@ -32,19 +32,21 @@ class JWTAuthMiddleware implements FilterInterface
             // Verifique o token JWT
             $decoded = JWT::decode($token, new Key($key, 'HS256'));
 
+            // Mensagem de token Expirado
         } catch ( ExpiredException $e) {
             $response = service('response');
             $data = ['error' => 'Token expirado'];
             return $response->setJSON($data)->setStatusCode(401);
-
+            
+            // Mensagem de token invalido
         } catch (\Exception $e) {
             $response = service('response');
             $data = ['error' => 'Token inválido'];
             return $response->setJSON($data)->setStatusCode(401);
         }
 
-        // Você pode acessar os dados do usuário a partir de $decoded->data
-      //   Exemplo: $user = $decoded->data;
+       
+      // Exemplo: $user = $decoded->data;
 
         return $request;
     }
