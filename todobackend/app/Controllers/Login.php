@@ -11,7 +11,7 @@ class Login extends ResourceController{
 
 use ResponseTrait;
 
-//where('name',$query->name )->first()
+
 public function __construct(){
 
     $this->model =  new TodoListModelUser();
@@ -37,6 +37,8 @@ public function authJwt(){
         ];
 
         $encode= JWT::encode($payload, $_ENV['KEY'],"HS256");
+
+        
 
         return $this->respond($encode);
 
