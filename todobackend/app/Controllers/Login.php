@@ -44,8 +44,13 @@ public function authJwt(){
                 //criando uma nova chave com o token
         $decoded = JWT::decode($jwt, new Key($key, 'HS256'));
         
-        return $this->respond([$data,$jwt]);
+        $response = [
+             
+            $decoded->data,
+            $jwt,
+        ];
 
+        return $this->response->setJSON($response);
     }
 
     

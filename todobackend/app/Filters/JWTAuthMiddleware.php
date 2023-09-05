@@ -37,7 +37,7 @@ class JWTAuthMiddleware implements FilterInterface
             $response = service('response');
             $data = ['error' => 'Token expirado'];
             return $response->setJSON($data)->setStatusCode(401);
-            
+
             // Mensagem de token invalido
         } catch (\Exception $e) {
             $response = service('response');
@@ -45,10 +45,12 @@ class JWTAuthMiddleware implements FilterInterface
             return $response->setJSON($data)->setStatusCode(401);
         }
 
-       
-      // Exemplo: $user = $decoded->data;
+      $responseData = [
+            'token' => $token, // Adicione o token JWT à resposta
+            'user' => $decoded->data // Adicione os dados do usuário à resposta (supondo que estão em $decoded->data)
+        ];
 
-        return $request;
+        return $this->respond($responseData);
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

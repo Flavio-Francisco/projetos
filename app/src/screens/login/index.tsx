@@ -18,10 +18,10 @@ interface MyFormValues {
   password: string;
 }
 interface UserProps {
-  id:number;
+   user:{  id:number;
   name: string;
   email:string;
-  password: string;
+  password: string;}
 
 }
 
@@ -52,7 +52,7 @@ export default function Login() {
         onSubmit={values => {
         console.log(values);
         
-            api.post('/auth', {
+            api.post('/login', {
               name: values.user,
               password:values.password
              })
