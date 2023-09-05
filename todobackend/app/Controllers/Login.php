@@ -29,11 +29,10 @@ public function authJwt(){
 
     if($data['name'] ==$query->name && $data['password'] == $query->password){
 
-    //LEMBRA DE INSERIR A KEY NO .ENV 
     
         $payload =[
             // tempo de expiração
-            "exp"=>time() + 3600,
+            "exp"=>time() + 100,
             //data de criação
             "iat"=> time(),
             //dados do usuario

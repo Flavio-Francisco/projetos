@@ -1,6 +1,7 @@
 <?php
 
 namespace Config;
+use App\Filters\JWTAuthMiddleware;
 use PageNotFoundException\Pages;
 
 // Create a new instance of our RouteCollection class.
@@ -21,16 +22,14 @@ $routes->set404Override();
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
 // $routes->setAutoRoute(false);
-$routes->group('test', ['namespace' => 'App\Controllers', 'filter' => 'jwt'], function ($routes) {
-    $routes->get('/taskget', 'Task::get');
-});
+
 
 /*
  * --------------------------------------------------------------------
  * Route Definitions
  * --------------------------------------------------------------------
  */
-
+$Jwt = new JWTAuthMiddleware();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->post('/post', 'User::create');
@@ -42,7 +41,7 @@ $routes->put('/delete/(:segment)', 'User::delete/$1');
 $routes->post('/login', 'Login::authJwt');
 
         #Routes 
-// $routes->get('/taskget', 'Task::get');
+ $routes->get('/taskget', 'Task::get',['filter' => JWTAuthMiddleware::class] );
  $routes->post('/task/(:segment)','Task::createTask/$1');
  $routes->post('/show/(:segment)', 'Task::show/$1');
  $routes->post('/showCompleted/(:segment)', 'Task::showCompleted/$1');

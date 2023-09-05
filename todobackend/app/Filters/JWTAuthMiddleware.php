@@ -6,8 +6,8 @@ use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
-use Firebase\JWT\JWT;
 use Firebase\JWT\ExpiredException;
+use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 class JWTAuthMiddleware implements FilterInterface
@@ -22,16 +22,25 @@ class JWTAuthMiddleware implements FilterInterface
         $token = $request->getServer('HTTP_AUTHORIZATION');
 
         if (!$token) {
-            return $this->failUnauthorized('Token não fornecido');
+            
+            $response = service('response');
+            $data = ['error' => 'Token não fornecido'];
+            return $response->setJSON($data)->setStatusCode(401);
         }
 
         try {
             // Verifique o token JWT
             $decoded = JWT::decode($token, new Key($key, 'HS256'));
-        } catch (ExpiredException $e) {
-            return $this->failUnauthorized('Token expirado');
+
+        } catch ( ExpiredException $e) {
+            $response = service('response');
+            $data = ['error' => 'Token expirado'];
+            return $response->setJSON($data)->setStatusCode(401);
+
         } catch (\Exception $e) {
-            return $this->failUnauthorized('Token inválido');
+            $response = service('response');
+            $data = ['error' => 'Token inválido'];
+            return $response->setJSON($data)->setStatusCode(401);
         }
 
         // Você pode acessar os dados do usuário a partir de $decoded->data
@@ -42,6 +51,6 @@ class JWTAuthMiddleware implements FilterInterface
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Este método não requer implementação para autenticação JWT.
+        
     }
 }
