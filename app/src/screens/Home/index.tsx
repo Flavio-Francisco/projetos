@@ -53,7 +53,7 @@ export default function Home() {
     const [filterData, setFilterData] = useState<TaskProps[]>([]);
     const [listVisible, setListVisible] = useState(true)
     const [listVisible2, setListVisible2] = useState(true)
-    const [Visible, setVisible] = useState(false);
+    const [Visible, setVisible] = useState(true);
 
     const { task, taskComplet, queryComp, taskQuery, createTask, loading, loading2   } = useContext(AuthContextTask);
 

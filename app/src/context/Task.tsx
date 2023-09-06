@@ -43,27 +43,29 @@ export interface AuthContextDataProps {
     const [loading2, setLoading2] = useState(true);
     const [taskComplet, setTaskComplet] = useState<TaskProps[]>([]);
     const{user} = useContext(AuthContext); 
+
+    
  
 
     const taskQuery = useCallback(async () => {
 
-      await api.post(`/show/${user.id}`)
+      await api.post(`/show/${user.user.id}`)
         .then (response=>{
          setTask(response.data || [])
          setLoading(!loading)
         }).catch((err) => {
           console.log(err)
         })
-     }, [user.id])
+     }, [user.user.id])
 
      
 
      async function createTask(name:string) {
      
-    await  api.post(`/task/${user.id}`,{
+    await  api.post(`/task/${user.user.id}`,{
           name:name,
           completed:false,
-          user_id:user.id
+          user_id:user.user.id
       }) 
          
 }
@@ -93,14 +95,14 @@ export interface AuthContextDataProps {
         
      }
       const queryComp = useCallback(async () => {
-        await  api.post(`/showCompleted/${user.id}`)
+        await  api.post(`/showCompleted/${user.user.id}`)
         .then (response=>{
                 setTaskComplet(response.data)
                 setLoading2(!loading2) 
         }).catch((err) => {
           console.log(err)
         })
-    },[user.id])
+    },[user.user.id])
      
      
     return(

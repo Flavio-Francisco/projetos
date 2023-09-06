@@ -4,11 +4,13 @@ import { api } from "../api/api";
 import { useNavigation } from "@react-navigation/native";
 
 export interface AuthUserData{
-    
+  token:string
+    user:{
         id: number;
         name:string;
         email:string;
         password:string;
+      }
     
 }
 
@@ -44,10 +46,13 @@ if (data) {
 
        function singnOut(){
        return setUser({
-           email: '',
-           name: "",
-           id:0,
-           password:'',
+        token:'',
+         user:{
+          email: '',
+          name: "",
+          id:0,
+          password:'',
+         }
        });
 }
    
