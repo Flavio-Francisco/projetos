@@ -18,7 +18,8 @@ interface MyFormValues {
   password: string;
 }
 interface UserProps {
-   user:{  id:number;
+   user:{ 
+   id:number;
   name: string;
   email:string;
   password: string;}

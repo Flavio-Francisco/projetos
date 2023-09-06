@@ -15,7 +15,7 @@ export default function Routes() {
   return (
       <NavigationContainer>
           
-          {user.id > 0 ? <Tab/> : <Stack/>}
+          {user.user?.id > 0 ? <Tab/> : <Stack/>}
 
         </NavigationContainer>
       

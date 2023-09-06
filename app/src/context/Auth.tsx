@@ -15,6 +15,7 @@ export interface AuthUserData{
 }
 
 
+
 export interface AuthContextDataProps {
     user: AuthUserData;
     singnIn:(data:AuthUserData)=>Promise<void>;
@@ -42,8 +43,6 @@ if (data) {
     
         
   }
-
-
        function singnOut(){
        return setUser({
         token:'',
