@@ -12,6 +12,9 @@ export default function Routes() {
  
   const {user} = useContext(AuthContext)
 
+  console.log(user.user?.id );
+  
+
   return (
       <NavigationContainer>
           

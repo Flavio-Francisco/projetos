@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ReactNode, SetStateAction, createContext, useState } from "react";
 import { api } from "../api/api";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export interface AuthUserData{
   token:string
@@ -33,26 +35,60 @@ export interface AuthContextDataProps {
 
   export function  AuthContextProvider({ children }: AuthContextProviderProps){
     const [user, setUser] = useState<AuthUserData>({} as AuthUserData);
-   
-  
-    async function singnIn(data:AuthUserData){
-if (data) {
-  setUser(data)    
-  
-}
+
     
+    useEffect(() => {
+      async function loadStorageData() {
+        const storagedUser = await AsyncStorage.getItem("userData");
+
+        console.log(storagedUser);
         
-  }
+      
+  
+        if (storagedUser ) {
+          setUser(JSON.parse(storagedUser));
+        }
+      }
+  
+      loadStorageData();
+    },[]);
+
+    console.log(user);
+    
+  
+     async function singnIn(data:AuthUserData){
+      if (data) {
+        try {
+          await AsyncStorage.setItem('userData', JSON.stringify(data));
+        setUser(data)    
+
+        } catch (error) {
+          console.error("Error storing user data in AsyncStorage:", error);
+        }
+      
+      }
+     
+        
+     }
        function singnOut(){
-       return setUser({
+
+        AsyncStorage.removeItem('userData').catch((error) => {
+          console.error("Error removing user data from AsyncStorage:", error);
+        })
+
+
+       setUser({
         token:'',
          user:{
           email: '',
           name: "",
           id:0,
           password:'',
-         }
-       });
+         },
+        
+        });
+
+       
 }
    
     return(

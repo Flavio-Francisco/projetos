@@ -16,14 +16,7 @@ const{Navigator,Screen} =  createStackNavigator();
 export default function Tab() {
     return(
         <Navigator>
-            <Screen
-          name='Login'
-          component={Login}
-        options={{
-        headerShown:false
-          
-        }}
-          />
+        
          <Screen
           name='Home'
           component={Home}
