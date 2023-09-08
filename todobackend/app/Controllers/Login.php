@@ -21,7 +21,6 @@ public function __construct(){
 
 public function authJwt(){
     
-  
 
     $query = $this->request->getJSON();
     $data = $this->model->where('name',$query->name )->first();

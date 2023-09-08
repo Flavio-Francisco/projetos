@@ -33,10 +33,13 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-
               #Category
+              
+$routes->post('/create','Category::create'); 
+$routes->get('/createcategory','Category::showCategory'); 
+$routes->patch('/updateCategory/(:segment)', 'Category::update/$1');
+$routes->delete('/delete/(:segment)', 'Category::deleteCategory/$1');
 
-$routes->post('/createcategory','Category::createCategory'); 
 
 $routes->post('/post', 'User::create');
 $routes->get('/get', 'User::get');

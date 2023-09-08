@@ -23,7 +23,7 @@ class TodoListModelCategory extends Model
     //relacionamento entre as tabelas
     public function task()
     {
-        return $this->belongsTo(TodoListModelUser::class, 'task_id');
+        return $this->belongsTo(TodoListModelTask::class, 'task_id');
     }
 
 
