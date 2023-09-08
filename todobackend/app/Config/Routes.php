@@ -13,7 +13,7 @@ $routes = Services::routes();
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('User');
+$routes->setDefaultController('Category');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -29,9 +29,15 @@ $routes->set404Override();
  * Route Definitions
  * --------------------------------------------------------------------
  */
-$Jwt = new JWTAuthMiddleware();
+
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+
+              #Category
+
+$routes->post('/createcategory','Category::createCategory'); 
+
 $routes->post('/post', 'User::create');
 $routes->get('/get', 'User::get');
 $routes->post('/auth', 'User::auth');
@@ -40,8 +46,8 @@ $routes->put('/update/(:segment)', 'User::update/$1');
 $routes->put('/delete/(:segment)', 'User::delete/$1');
 $routes->post('/login', 'Login::authJwt');
 
-        #Routes 
- $routes->get('/taskget', 'Task::get',['filter' => JWTAuthMiddleware::class] );
+        #Tasks 
+ $routes->get('/taskget', 'Task::get'/*,['filter' => JWTAuthMiddleware::class]*/) ;
  $routes->post('/task/(:segment)','Task::createTask/$1');
  $routes->post('/show/(:segment)', 'Task::show/$1');
  $routes->post('/showCompleted/(:segment)', 'Task::showCompleted/$1');
@@ -49,6 +55,9 @@ $routes->post('/login', 'Login::authJwt');
  $routes->delete('/drop/(:segment)', 'Task::drop/$1');
  $routes->patch('/showAtera/(:segment)', 'Task::showAtera/$1');
 
+    
+
+  
  
 /*
  * --------------------------------------------------------------------
