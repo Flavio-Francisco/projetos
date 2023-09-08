@@ -43,9 +43,6 @@ import { api } from "../../api/api";
 
 
 
-
-
-
 export default function Home() {
     const [modalVisible, setModalVisible] = useState(false);
     const [newTask, setNewTask] = useState('')

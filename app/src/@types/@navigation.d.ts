@@ -1,18 +1,16 @@
-export declare global{
-import { CreateCategory } from './../screens/CreateCategory/index';
+export declare global {
+  namespace ReactNavigation {
+    interface RootParamList {
+      Login: undefined;
+      CreateCategory: {
+        modal: boolean;
+      };
+      Home: undefined;
 
-    namespace ReactNavigation{
-        interface RootParamList{
-            Login:undefined;
-            CreateCategory:{
-                modal:boolean
-            },
-            Home:undefined
-            
-            Options:{
-                isChecked:boolean
-            }
-
-        }
+      Options: {
+        isChecked: boolean;
+        modal: boolean;
+      };
     }
+  }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { MaterialCommunityIcons, Fontisto, Feather, Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Fontisto, Feather, Ionicons } from "@expo/vector-icons";
 import { ButtomIcon, TextIcon, HorizontalLine, Container, Title, ContainerTitle, ContainerFull, Header, AvatarUser, ButtomAdd, TextButton, ContaineModal } from "./style";
 import { Modal, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -9,12 +9,10 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-interface PropsModal {
-  modal: boolean,
-}
 
 
-export default function Options(props: PropsModal) {
+
+export default function Options() {
   const navigation = useNavigation();
   function handleSubmit() {
     navigation.navigate('CreateCategory', {
@@ -26,7 +24,7 @@ export default function Options(props: PropsModal) {
 
       <Modal
         animationType="slide"
-        visible={props.modal}
+        visible={true}
       >
         <ContainerFull>
 
