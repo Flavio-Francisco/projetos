@@ -18,11 +18,12 @@ interface MyFormValues {
   password: string;
 }
 interface UserProps {
-   user:{ 
-   id:number;
-  name: string;
-  email:string;
-  password: string;}
+  user: {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+  }
 
 }
 
@@ -37,12 +38,12 @@ const validationSchema = Yup.object().shape({
 
 export default function Login() {
   const [validation, setValidation] = useState<UserProps>();
-  const {navigate} = useNavigation()
- 
-  const {singnIn} = useContext(AuthContext)
-  
+  const { navigate } = useNavigation()
+
+  const { singnIn } = useContext(AuthContext)
+
   const FormValues: MyFormValues = { user: '', password: '' };
-  
+
   return (
     <ConteinerLogin>
 
@@ -51,25 +52,25 @@ export default function Login() {
         initialValues={FormValues}
 
         onSubmit={values => {
-        console.log(values);
-        
-            api.post('/login', {
-              name: values.user,
-              password:values.password
-             })
-              .then(respose => {
-                  singnIn(respose.data)
-                  navigate('Home')
-                  console.log(respose.data)
-                
-              })
-              .catch(erro=>{
-                console.error(erro)
-              })
-          
-  
-            
-           
+          console.log(values);
+
+          api.post('/login', {
+            name: values.user,
+            password: values.password
+          })
+            .then(respose => {
+              singnIn(respose.data)
+              navigate('Home')
+              console.log(respose.data)
+
+            })
+            .catch(erro => {
+              console.error(erro)
+            })
+
+
+
+
         }
 
         }
@@ -99,7 +100,7 @@ export default function Login() {
             {errors.password ? (<TextErro>{errors.password}</TextErro>) : (<></>)}
             <ButtomLogin
               onPress={() => handleSubmit()}
-             
+
             >
               <TextButton>Login</TextButton>
             </ButtomLogin>

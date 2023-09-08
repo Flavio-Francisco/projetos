@@ -55,35 +55,35 @@ export default function Home() {
     const [listVisible2, setListVisible2] = useState(true)
     const [Visible, setVisible] = useState(true);
 
-    const { task, taskComplet, queryComp, taskQuery, createTask, loading, loading2   } = useContext(AuthContextTask);
+    const { task, taskComplet, queryComp, taskQuery, createTask, loading, loading2 } = useContext(AuthContextTask);
 
     console.log(task, taskComplet)
 
- 
+
 
 
     useEffect(() => {
         queryComp()
         taskQuery()
-        
+
         console.log('====================================');
         console.log(filterData);
         console.log('====================================');
     }, [queryComp, taskQuery])
 
-    function searcFilter(text:string) {
-     
+    function searcFilter(text: string) {
+
         if (text) {
             //filtro de pesquisa
-            const newData = task.filter((item)=>{
+            const newData = task.filter((item) => {
                 if (item.name) {
                     const itemData = item.name.toUpperCase();
                     const textData = text.toUpperCase();
-                    return itemData.indexOf(textData)>-1;
+                    return itemData.indexOf(textData) > -1;
                 }
             });
             setFilterData(newData)
-        }else{
+        } else {
             setFilterData(task)
         }
         setSearch(text)
@@ -115,20 +115,21 @@ export default function Home() {
             </HeaderHome>
 
             <ConteinerSearch>
-                <SearchButtom 
-                onPress={()=>searcFilter(search)}
+                <SearchButtom
+                    onPress={() => searcFilter(search)}
                 >
                     <Feather name="search" size={30} color="#AFAFAF" />
                 </SearchButtom>
                 <Search
-                onChangeText={(text)=>{
-                    setVisible(!Visible)
-                    searcFilter(text)}}
-                value={search}
-               
+                    onChangeText={(text) => {
+                        setVisible(!Visible)
+                        searcFilter(text)
+                    }}
+                    value={search}
+
                 />
             </ConteinerSearch>
-       
+
             <SearchButtomList
                 onPress={() => {
                     setListVisible(!listVisible)
@@ -141,43 +142,43 @@ export default function Home() {
                     <><TextSearch>Today </TextSearch><AntDesign name="up" size={12} color="#ffffff" /></>
                 }
             </SearchButtomList>
-            {Visible==true?
-            <>
-            {listVisible == true ?
-                <ConteinerList>
-                    {loading ? (<ActivityIndicator size={30} color={'#ffffff'} />) :
-                        <FlatList
-                            data={task}
-                            keyExtractor={item => item.name}
-                            renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} onpress={updateTask} numbericom={1} compreted={false} id={0}  />}
-                        />
+            {Visible == true ?
+                <>
+                    {listVisible == true ?
+                        <ConteinerList>
+                            {loading ? (<ActivityIndicator size={30} color={'#ffffff'} />) :
+                                <FlatList
+                                    data={task}
+                                    keyExtractor={item => item.name}
+                                    renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} onpress={updateTask} numbericom={1} compreted={false} id={0} />}
+                                />
 
+                            }
+                        </ConteinerList> : <ConteinerListNull></ConteinerListNull>
                     }
-                </ConteinerList> : <ConteinerListNull></ConteinerListNull>
-            }
 
-            </>:
-            <>
-                    <ButtomSeach 
-                        onPress={()=>setVisible(!Visible)}
+                </> :
+                <>
+                    <ButtomSeach
+                        onPress={() => setVisible(!Visible)}
                     >
                         <TextButtom>x</TextButtom>
                     </ButtomSeach>
 
-                 <ConteinerList>
-                    {loading ? (<ActivityIndicator size={30} color={'#ffffff'} />) :
-                        <FlatList
-                            data={filterData}
-                            keyExtractor={item => item.id}
-                            renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} onpress={updateTask} numbericom={1} compreted={false} id={0}  />}
-                        />
+                    <ConteinerList>
+                        {loading ? (<ActivityIndicator size={30} color={'#ffffff'} />) :
+                            <FlatList
+                                data={filterData}
+                                keyExtractor={item => item.id}
+                                renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} onpress={updateTask} numbericom={1} compreted={false} id={0} />}
+                            />
 
-                    }
-                </ConteinerList>
-            
-            </>
+                        }
+                    </ConteinerList>
+
+                </>
             }
-            
+
             <SearchButtomList2
                 onPress={() => setListVisible2(!listVisible2)}
             >
@@ -194,7 +195,7 @@ export default function Home() {
                         <FlatList
                             data={taskComplet}
                             keyExtractor={item => item.id}
-                            renderItem={(item) => <Card2 task={item.item.name}  />}
+                            renderItem={(item) => <Card2 task={item.item.name} />}
                         />
 
                     }
@@ -209,7 +210,7 @@ export default function Home() {
             <BottomSheetComponent
                 isOpen={modalVisible}
                 toggle={() => setModalVisible(false)}
-                snapPoints={['90%'] }
+                snapPoints={['90%']}
 
             >
 
@@ -243,7 +244,7 @@ export default function Home() {
 
                                 createTask(newTask)
                                 taskQuery()
-                              
+
                             }}
                             onPress={() => setModalVisible(!modalVisible)}
 

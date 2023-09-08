@@ -1,4 +1,4 @@
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs'
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 
 import Login from '../screens/login';
 import Register from '../screens/register';
@@ -11,25 +11,25 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 
-const{Navigator,Screen} =  createStackNavigator();
+const { Navigator, Screen } = createStackNavigator();
 
 export default function Tab() {
-    return(
-        <Navigator>
-        
-         <Screen
-          name='Home'
-          component={Home}
+  return (
+    <Navigator>
+
+      <Screen
+        name='Home'
+        component={Home}
         options={{
-        headerShown:false
-          
+          headerShown: false
+
         }}
-          /> 
-          <Screen
-          name='CreateCategory'
-          component={CreateCategory}
-       
-           />  
-        </Navigator>
-    )
+      />
+      <Screen
+        name='CreateCategory'
+        component={CreateCategory}
+
+      />
+    </Navigator>
+  )
 }

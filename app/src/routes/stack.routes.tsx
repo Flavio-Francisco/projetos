@@ -13,56 +13,56 @@ import Register from '../screens/register';
 
 
 
-const{Navigator,Screen} =  createStackNavigator();
+const { Navigator, Screen } = createStackNavigator();
 
 export default function Stack() {
-    return(
-        <Navigator>
+  return (
+    <Navigator>
 
-          <Screen
-          name='Login'
-          component={Login}
-          options={{
-               
-            headerShown:false
-          }}
-          
-        
-          />
-            <Screen
-          name='Home'
-          component={Home}
-          options={{
-               
-            headerShown:false
-          }}
-          />
-         <Screen
-          name='Options'
-          component={Options}
-          options={{
-               
-            headerShown:false
-          }}
-          />
-          <Screen
-          name='CreateCategory'
-          component={CreateCategory}
-          options={{
-               
-            headerShown:false
-          }}
-          />
-           <Screen
-          name='Register'
-          component={Register}
-          options={{
-               
-            headerShown:false
-          }}
-          />
-      
-         
-        </Navigator>
-    )
+      <Screen
+        name='Login'
+        component={Login}
+        options={{
+
+          headerShown: false
+        }}
+
+
+      />
+      <Screen
+        name='Home'
+        component={Home}
+        options={{
+
+          headerShown: false
+        }}
+      />
+      <Screen
+        name='Options'
+        component={Options}
+        options={{
+
+          headerShown: false
+        }}
+      />
+      <Screen
+        name='CreateCategory'
+        component={CreateCategory}
+        options={{
+
+          headerShown: false
+        }}
+      />
+      <Screen
+        name='Register'
+        component={Register}
+        options={{
+
+          headerShown: false
+        }}
+      />
+
+
+    </Navigator>
+  )
 }
