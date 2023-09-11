@@ -5,13 +5,17 @@ import { CategoryProps } from "../../context/Category";
 
 
 interface ColorProps{
+   
     id:string,
     color:string,
-    onPress:(id: string, category: CategoryProps)=>void,
+    onPress:(category: CategoryProps)=>void,
 }
 
 export default function CardColor(props:ColorProps){
-
+const category: CategoryProps ={
+    name: "",
+    icon: ""
+};
     
 
     return(
@@ -21,7 +25,7 @@ export default function CardColor(props:ColorProps){
             backgroundColor:props.color
            }}
 
-           onPress={()=>props.onPress}
+           onPress={()=>props.onPress( category)}
            />
         </Conteiner>
     )

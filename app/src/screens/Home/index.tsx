@@ -104,14 +104,14 @@ export default function Home() {
 
         setSelect(id)
        console.log('====================================');
-       console.log('tá errado');
+       console.log(id);
        console.log('====================================');
         if(id ){
             console.log('tá errado');
         }else{
          /*   if (select === id) {
                 navigate('CreateCategory',{
-                    task:task,
+                    id:id,
                     modal:true
                 })
             }*/

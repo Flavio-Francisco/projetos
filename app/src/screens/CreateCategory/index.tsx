@@ -53,6 +53,11 @@ const DATA = [
 },   
 
 ];
+    function handleCategory(category: CategoryProps){
+        
+        
+    }
+
   const { addCategory } = useContext(AuthContextCategory);
 
     return(
@@ -71,7 +76,7 @@ const DATA = [
                 data={DATA}
                 horizontal={true}
                 keyExtractor={item => item.id}
-                renderItem={(item) => <CardColor id={""} color={item.item.color} onPress={addCategory()}/>}
+                renderItem={(item) => <CardColor id={""} color={item.item.color}onPress={handleCategory} />}
                
               />
                 <ConteinerButton >
