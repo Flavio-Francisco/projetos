@@ -17,15 +17,16 @@ import {
 
 import { api } from '../../api/api';
 import { AuthContext } from '../../context/Auth';
-import { AuthContextTask } from '../../context/Task';
+import { AuthContextTask, TaskProps } from '../../context/Task';
 
 interface PropsList {
-    id: number;
+    id: string;
     task: string;
     data: string;
     numbericom: number;
     compreted: boolean;
     onpress: (name: string) => void;
+    onPress:(id:string)=>void;
 
 }
 
@@ -59,6 +60,7 @@ export default function Card(props: PropsList) {
                     <TextIcon>{props.data}</TextIcon>
                     <ViewButtomIcon>
                         <TasksButtom
+                        onPress={()=>props.onPress(props.id)}
                         >
                             <Feather name="home" size={18} color="#A30000" />
                             <TextIcon>Home</TextIcon>

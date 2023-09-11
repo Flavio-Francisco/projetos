@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FlatList } from "react-native";
 import CardColor from "../../components/CardColor";
+import { AuthContextCategory, CategoryProps } from "../../context/Category";
 import { Conteiner, 
     Label,
      Title,
@@ -52,9 +53,10 @@ const DATA = [
 },   
 
 ];
-
+  const { addCategory } = useContext(AuthContextCategory);
 
     return(
+        
         <Conteiner>
             
             <Title>Create new category</Title>
@@ -69,7 +71,7 @@ const DATA = [
                 data={DATA}
                 horizontal={true}
                 keyExtractor={item => item.id}
-                renderItem={(item) => <CardColor id={""} color={item.item.color}/>}
+                renderItem={(item) => <CardColor id={""} color={item.item.color} onPress={addCategory()}/>}
                
               />
                 <ConteinerButton >

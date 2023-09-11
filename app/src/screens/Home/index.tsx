@@ -29,7 +29,7 @@ import {
     TextButtom
 } from "./style";
 import { Feather, Ionicons, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useCallback } from "react";
 
 
 
@@ -40,6 +40,9 @@ import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import { BottomSheetComponent } from "../../components/BuutomSheet";
 import { api } from "../../api/api";
+import { useNavigation } from "@react-navigation/native";
+import { id } from '@gorhom/bottom-sheet/src/utilities/id';
+
 
 
 
@@ -51,8 +54,10 @@ export default function Home() {
     const [listVisible, setListVisible] = useState(true)
     const [listVisible2, setListVisible2] = useState(true)
     const [Visible, setVisible] = useState(true);
-
+    const[select,setSelect] = useState('')
     const { task, taskComplet, queryComp, taskQuery, createTask, loading, loading2 } = useContext(AuthContextTask);
+
+    const {navigate} = useNavigation();
 
     console.log(task, taskComplet)
 
@@ -66,7 +71,7 @@ export default function Home() {
         console.log('====================================');
         console.log(filterData);
         console.log('====================================');
-    }, [queryComp, taskQuery])
+    }, [queryComp, taskQuery ])
 
     function searcFilter(text: string) {
 
@@ -95,6 +100,27 @@ export default function Home() {
             queryComp()
         })
     }
+    function hadleCategory (id:string){
+
+        setSelect(id)
+       console.log('====================================');
+       console.log('tá errado');
+       console.log('====================================');
+        if(id ){
+            console.log('tá errado');
+        }else{
+         /*   if (select === id) {
+                navigate('CreateCategory',{
+                    task:task,
+                    modal:true
+                })
+            }*/
+            console.log('tá errado');
+        }
+      
+      
+    }
+    
 
     return (
         <Conteiner>
@@ -147,7 +173,14 @@ export default function Home() {
                                 <FlatList
                                     data={task}
                                     keyExtractor={item => item.name}
-                                    renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} onpress={updateTask} numbericom={1} compreted={false} id={0} />}
+                                    renderItem={({item}) => <Card task={item.name}
+                                        onPress={ hadleCategory}
+                                        data={"Today At 16:45"}
+                                        onpress={updateTask}
+                                        numbericom={1}
+                                        compreted={false}
+                                        id={item.id} />}
+
                                 />
 
                             }
@@ -167,7 +200,14 @@ export default function Home() {
                             <FlatList
                                 data={filterData}
                                 keyExtractor={item => item.id}
-                                renderItem={(item) => <Card task={item.item.name} data={"Today At 16:45"} onpress={updateTask} numbericom={1} compreted={false} id={0} />}
+                                renderItem={({item}) =>
+                                    <Card task={item.name}
+                                        onPress={hadleCategory}
+                                        data={"Today At 16:45"}
+                                        onpress={updateTask}
+                                        numbericom={1}
+                                        compreted={false}
+                                        id={item.id} />}
                             />
 
                         }
