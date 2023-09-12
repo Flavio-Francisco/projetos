@@ -30,4 +30,20 @@ class TodoListModelTask extends Model
 
 
 
+
+	/**
+	 * @return mixed
+	 */
+	public function getAllowedFields() {
+		return $this->allowedFields;
+	}
+	
+	/**
+	 * @param mixed $allowedFields 
+	 * @return self
+	 */
+	public function setAllowedFields($allowedFields): self {
+		$this->allowedFields = $allowedFields;
+		return $this;
+	}
 }
