@@ -255,7 +255,6 @@ export default function Home() {
                 snapPoints={['90%']}
 
             >
-
                 <ConteinerModal >
 
                     <TextTask>Add Task</TextTask>
@@ -294,11 +293,8 @@ export default function Home() {
                             <Ionicons name="ios-send-outline" size={24} color="#8687E7" />
                         </ButtomIcon>
                     </ConteinerIcon>
-
                 </ConteinerModal>
-
             </BottomSheetComponent>
-
         </Conteiner>
     )
 }
