@@ -13,7 +13,7 @@ $routes = Services::routes();
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Category');
+$routes->setDefaultController('Task');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -57,7 +57,7 @@ $routes->post('/login', 'Login::authJwt');
  $routes->delete('/deletetask/(:segment)/(:segment)', 'Task::delete/$1/$2');
  $routes->delete('/drop/(:segment)', 'Task::drop/$1');
  $routes->patch('/showAtera/(:segment)', 'Task::showAtera/$1');
-
+ $routes->patch('/category/(:segment)', 'Task::updateCategory/$1');
     
 
   

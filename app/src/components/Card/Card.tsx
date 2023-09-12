@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { RadioButton } from 'react-native-paper';
 import { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
@@ -15,9 +15,6 @@ import {
     RadioButtonView
 } from "./style";
 
-import { api } from '../../api/api';
-import { AuthContext } from '../../context/Auth';
-import { AuthContextTask, TaskProps } from '../../context/Task';
 
 interface PropsList {
     id: string;

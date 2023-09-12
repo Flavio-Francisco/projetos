@@ -58,9 +58,7 @@ public function showCompleted($id = null) {
  public function showAtera($name=null) {
 
     $data = $this->request->getJSON();
-    $this->model->where('name', $name )->set(['completed' => $data->completed])->update();
-
-
+    if ( $this->model->where('name', $name )->set(['completed' => $data->completed])->update()) {
         $response = [
             'status'   => 200,
             'error'    => null,
@@ -69,9 +67,55 @@ public function showCompleted($id = null) {
             ]
         ];
         return $this->response->setJSON($response);
+    }
+   
+    return $this->respond("dados invalidos");
+
+     
     
    
 }
+
+    public function updateCategory($name = null)
+    {
+       
+        // Obtém os dados JSON do corpo da requisição
+        $data = $this->request->getJSON();
+
+        // Procura a categoria com base no nome
+        $category = $this->model->where('name', $name)->first();
+
+        if (!$category) {
+            // Categoria não encontrada, retorna um erro
+            $response = [
+                'status'   => 404,
+                'error'    => 'Categoria não encontrada',
+                'messages' => []
+            ];
+            return $this->response->setJSON($response);
+        }
+
+        // Atualiza as propriedades da categoria com os dados do corpo da requisição
+        $category->category = $data->category;
+        $category->color = $data->color;
+     
+        // Salva a categoria atualizada no banco de dados
+       $this->model->save($category);
+
+        // Resposta de sucesso
+        $response = [
+            'status'   => 200,
+            'error'    => null,
+            'messages' => [
+                'success' => 'Dados alterados com sucesso'
+            ]
+        ];
+
+        return $this->response->setJSON($response);
+    }
+
+
+
 
 
    public function createTask($id = null){

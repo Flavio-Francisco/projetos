@@ -7,16 +7,12 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-
-
-
-
-
 export default function Options() {
   const navigation = useNavigation();
   function handleSubmit() {
     navigation.navigate('CreateCategory', {
       modal: true,
+      id: ''
     });
   }
   return (

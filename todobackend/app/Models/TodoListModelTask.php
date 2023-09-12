@@ -16,7 +16,9 @@ class TodoListModelTask extends Model
     protected $allowedFields    = [
         'name',
         'completed',
-        'user_id'
+        'user_id',
+        'category',
+        'color'
 
     ];
 

@@ -4,29 +4,24 @@ import { CategoryProps } from "../../context/Category";
 
 
 
-interface ColorProps{
-   
-    id:string,
-    color:string,
-    onPress:(category: CategoryProps)=>void,
+interface ColorProps {
+
+    id: string,
+    color: string,
+    onPress: (color: string) => void,
 }
 
-export default function CardColor(props:ColorProps){
-const category: CategoryProps ={
-    name: "",
-    icon: ""
-};
-    
+export default function CardColor(props: ColorProps) {
 
-    return(
+    return (
         <Conteiner>
-           <ButtomIconAdd
-           style={{
-            backgroundColor:props.color
-           }}
+            <ButtomIconAdd
+                style={{
+                    backgroundColor: props.color
+                }}
 
-           onPress={()=>props.onPress( category)}
-           />
+                onPress={() => props.onPress(props.color)}
+            />
         </Conteiner>
     )
 }
