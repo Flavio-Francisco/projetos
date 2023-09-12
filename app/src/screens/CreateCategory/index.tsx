@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FlatList } from "react-native";
 import CardColor from "../../components/CardColor";
-import { AuthContextCategory, CategoryProps } from "../../context/Category";
+
 import {
     Conteiner,
     Label,
@@ -15,7 +15,7 @@ import {
     ButtomCreate,
     TextCancel
 } from "./style";
-import { RouteProp, useRoute } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { api } from "../../api/api";
 import { AuthContextTask } from "../../context/Task";
 
@@ -29,7 +29,7 @@ type PerfilTeacherParams = RouteProp<RootStackParamList, 'Task'>;
 
 
 export function CreateCategory() {
-
+    const { navigate } = useNavigation();
     const [selectName, setSelectName] = useState('')
     const [selectColor, setSelecColor] = useState('')
     const { task, taskComplet, queryComp, taskQuery, createTask, loading, loading2 } = useContext(AuthContextTask);
@@ -71,7 +71,8 @@ export function CreateCategory() {
 
     ];
 
-    function handleColor(color:string){
+
+    function handleColor(color: string) {
         setSelecColor(color);
         console.log('====================================');
         console.log(color);
@@ -80,23 +81,35 @@ export function CreateCategory() {
 
     function handleCategory() {
         async function updateTask() {
-              await api.patch(`/showAtera/${id}`, {
-                  name: id,
-                  categoria: selectName,
-                  cor:selectColor
-              }).then(() => {
-                  taskQuery();
-                  queryComp()
-              })
-              setSelectName('')
-          }
+            await api.patch(`/category/${id}`, {
+
+                category: selectName,
+                color: selectColor
+            }).then(() => {
+                taskQuery();
+                queryComp()
+            })
+            setSelectName('')
+            setSelecColor('')
+            navigate('Home')
+        }
+        updateTask()
         console.log('====================================');
         console.log(id);
+        console.log(selectName);
         console.log(selectColor);
         console.log('====================================');
 
     }
+    useEffect(() => {
 
+    }, [selectColor])
+    function handleCancel() {
+
+        setSelecColor('')
+        setSelectName('')
+        navigate('Home')
+    }
 
 
     return (
@@ -121,8 +134,12 @@ export function CreateCategory() {
                 renderItem={(item) => <CardColor id={""} color={item.item.color} onPress={handleColor} />}
 
             />
-            <ConteinerButton >
-                <ButtomCancel><TextCancel>Cancel</TextCancel></ButtomCancel>
+            <ConteinerButton>
+                <ButtomCancel
+                    onPress={handleCancel}
+                >
+                    <TextCancel>Cancel</TextCancel>
+                </ButtomCancel>
                 <ButtomCreate
                     onPress={handleCategory}
                 >

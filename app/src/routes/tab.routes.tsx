@@ -28,6 +28,11 @@ export default function Tab() {
       <Screen
         name='CreateCategory'
         component={CreateCategory}
+        options={{
+          headerShown: false
+
+        }}
+        
 
       />
     </Navigator>

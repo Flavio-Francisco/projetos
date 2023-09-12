@@ -103,7 +103,6 @@ public function showCompleted($id = null) {
     $data = $this->request->getJSON();
     
 
-    
    if ($modelUser->find($id)) {
 
 

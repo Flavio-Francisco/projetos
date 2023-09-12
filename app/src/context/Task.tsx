@@ -9,6 +9,8 @@ export interface TaskProps {
   name: string;
   completed: boolean;
   user_id: number;
+  category:string;
+  color:string;
 
 }
 
@@ -61,11 +63,16 @@ export function AuthContextProviderTask({ children }: AuthContextProviderProps) 
 
 
   async function createTask(name: string) {
-
+    console.log('====================================');
+    console.log(name);
+    console.log(user.user.id);
+    console.log('====================================');
     await api.post(`/task/${user.user?.id}`, {
       name: name,
       completed: false,
-      user_id: user.user?.id
+      user_id: user.user?.id,
+      cotegory:'',
+      color: '',
     })
 
   }

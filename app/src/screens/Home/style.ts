@@ -162,7 +162,7 @@ export const InputTask = styled.TextInput.attrs({
   padding: 10px;
   border: 1px solid #979797;
   border-radius: 5px;
-  color: #979797;
+  color: #fff;
 `;
 export const InputDescription = styled.TextInput.attrs({
   placeholder: "Description",

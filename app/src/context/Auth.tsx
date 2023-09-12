@@ -43,8 +43,6 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 
       console.log(storagedUser);
 
-
-
       if (storagedUser) {
         setUser(JSON.parse(storagedUser));
       }

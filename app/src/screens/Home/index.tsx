@@ -122,7 +122,6 @@ export default function Home() {
 
     }
 
-
     return (
         <Conteiner>
 
@@ -175,12 +174,15 @@ export default function Home() {
                                     data={task}
                                     keyExtractor={item => item.name}
                                     renderItem={({ item }) => <Card task={item.name}
+                                        color={item.color}
                                         onPress={hadleCategory}
                                         data={"Today At 16:45"}
                                         onpress={updateTask}
                                         numbericom={1}
                                         compreted={false}
-                                        id={item.name} />}
+                                        id={item.name}
+                                        category={item.category} />}
+
 
                                 />
 
@@ -203,11 +205,13 @@ export default function Home() {
                                 keyExtractor={item => item.id}
                                 renderItem={({ item }) =>
                                     <Card task={item.name}
+                                        color={item.color}
                                         onPress={hadleCategory}
                                         data={"Today At 16:45"}
                                         onpress={updateTask}
                                         numbericom={1}
                                         compreted={false}
+                                        category={item.category}
                                         id={item.id} />}
                             />
 

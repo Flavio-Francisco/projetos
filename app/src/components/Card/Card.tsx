@@ -12,7 +12,9 @@ import {
     TasksTextP,
     TextIcon,
     ViewButtomIcon,
-    RadioButtonView
+    RadioButtonView,
+    TasksButtomVazio,
+    TextIconVazio
 } from "./style";
 
 
@@ -22,8 +24,10 @@ interface PropsList {
     data: string;
     numbericom: number;
     compreted: boolean;
+    category: string;
+    color: string;
     onpress: (name: string) => void;
-    onPress:(id:string)=>void;
+    onPress: (id: string) => void;
 
 }
 
@@ -36,19 +40,19 @@ export default function Card(props: PropsList) {
 
     return (
         <Conteiner>
-        <RadioButtonView>
-            <RadioButton
-                value={"first"}
-                status={isChecked === true ? 'checked' : 'unchecked'}
-                color='#fff'
-                uncheckedColor='#fff'
-                onPress={() => {
-                    props.onpress(props.task)
-                    setChecked(!isChecked)
-                }}
-              
-            />
-         </RadioButtonView>
+            <RadioButtonView>
+                <RadioButton
+                    value={"first"}
+                    status={isChecked === true ? 'checked' : 'unchecked'}
+                    color='#fff'
+                    uncheckedColor='#fff'
+                    onPress={() => {
+                        props.onpress(props.task)
+                        setChecked(!isChecked)
+                    }}
+
+                />
+            </RadioButtonView>
             <ConteinerView>
                 <ConteinerTask >
                     <TasksTextG>{props.task}</TasksTextG>
@@ -56,12 +60,21 @@ export default function Card(props: PropsList) {
                 <ConteinerData>
                     <TextIcon>{props.data}</TextIcon>
                     <ViewButtomIcon>
-                        <TasksButtom
-                        onPress={()=>props.onPress(props.id)}
+                    { props.category ?  <TasksButtom
+                            style={{ backgroundColor: props.color }}
+                            onPress={() => props.onPress(props.id)}
                         >
-                            <Feather name="home" size={18} color="#A30000" />
-                            <TextIcon>Home</TextIcon>
-                        </TasksButtom>
+                            
+                            <TextIcon>{props.category}</TextIcon>
+                        </TasksButtom>:
+                        <TasksButtomVazio
+                        style={{ backgroundColor:'#5F9EA0'}}
+                        onPress={() => props.onPress(props.id)}
+                        >
+                                <TextIconVazio> Add Category</TextIconVazio>
+                        </TasksButtomVazio>
+                        
+                        }
                         < TasksTextP>
                             <Feather name="flag" size={18} color="#ffffff" />{props.numbericom}
                         </TasksTextP>

@@ -23,6 +23,7 @@ export const  Label = styled.TextInput.attrs({
     placeholder:'Category name',
     placeholderTextColor:'#AFAFAF',
     
+    
 })`
 
   width:90%;
@@ -32,6 +33,7 @@ export const  Label = styled.TextInput.attrs({
   border-radius: 5px;
   background-color:#535353;
   margin-top:15px;
+  color:#fff;
  
   `;
 
@@ -90,6 +92,7 @@ export const  ButtomCancel = styled.TouchableOpacity`
  justify-content:center;
  background-color:#000;
  border-radius:5px;
+ border :1px #8687E7;
  `;
  export const  ButtomCreate = styled.TouchableOpacity`
  width:154px;
