@@ -187,7 +187,7 @@ export default function Home() {
                                 />
 
                             }
-                        </ConteinerList> : <ConteinerListNull></ConteinerListNull>
+                        </ConteinerList> : null
                     }
 
                 </> :
@@ -241,7 +241,7 @@ export default function Home() {
                         />
 
                     }
-                </ConteinerList2> : <ConteinerListNull2></ConteinerListNull2>
+                </ConteinerList2> : null
             }
             <ButtomModal
                 onPress={() => setModalVisible(!modalVisible)}

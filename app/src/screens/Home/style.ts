@@ -2,12 +2,11 @@ import styled from "styled-components/native";
 
 export const Conteiner = styled.View`
   height: 100%;
-  justify-content: center;
+
   background-color: #000;
 `;
 
 export const ConteinerList = styled.View`
-  height: 200px;
   justify-content: center;
   text-align: center;
   margin-bottom: 10px;
@@ -28,7 +27,6 @@ export const ConteinerList2 = styled.View`
   justify-content: center;
   text-align: center;
   margin-bottom: -25px;
-  height: 25%;
 `;
 export const ConteinerSearchInput = styled.View`
   justify-content: center;
@@ -82,6 +80,9 @@ export const ButtomModal = styled.TouchableOpacity`
   border-radius: 5px;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
 `;
 export const TextModal = styled.Text`
   font-size: 16px;
